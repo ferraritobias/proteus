@@ -41,6 +41,19 @@ fábrica R1207/R1212/R1219/R1220, jumpers de modo do MAX9924, e a fiducial).
 - **2× VR**: MAX9924 U1203, U1204 + hall (74HC2G17).
 - Analógico/temperatura completo + knock front-end.
 
+## Resolução de shortfall JLC (estoque)
+
+- **LEDs de status unificados numa cor (verde)**: D1502, D1504, D1505, D1506,
+  D1507 agora numa linha só, LCSC `C9900025458` (peça house JLCPCB, 0603 verde).
+  Elimina os tipos Extended/shortfall das cores azul/laranja/vermelha. A cor não
+  tem efeito em firmware — é só indicador visual. **Confirmar estoque no carrinho.**
+- **Ainda em shortfall (funcionais — trocar por equivalente EM ESTOQUE na JLC,
+  preferir Basic):**
+  - `3.3n` 0805 (C1901, C1902) — manter 3.3nF / 0805; LCSC C53175 sem estoque.
+  - `1Ω` 0402 (R906) — manter 1Ω / 0402; LCSC C25086 sem estoque.
+  Use a lupa 🔍 da JLC para selecionar o equivalente em estoque (não dá para
+  validar estoque ao vivo fora da ferramenta da JLC).
+
 ## Atenção / validar antes de fechar pedido
 
 - **LCSC a confirmar no carrinho JLC** (linhas com LCSC vazio): `VNLD5160`,
