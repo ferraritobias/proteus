@@ -14,11 +14,20 @@ O PCB **não foi alterado** — isto é apenas seleção de populagem.
 | Arquivo | Uso |
 |---|---|
 | `proteus-bom-jlc-stage0.csv` | BOM para a JLC PCBA (todo o SMD, incl. automotivos e pad térmico). |
+| `proteus-top-pos-stage0.csv` | Arquivo de posição (CPL) recortado, **1:1 com a BOM** (296 peças). |
 | `proteus-bom-hand.csv` | Itens TH/mecânicos soldados à mão (AMPSEAL, USB, jack, eletrolítico). |
 | `proteus-dnp-stage0.csv` | Lista do que NÃO popular nesta etapa (expansão). |
 
-Use o `export/v0.7/proteus-top-pos.csv` como arquivo de posição (CPL). A JLC
-ignora na montagem os designadores que não estiverem na BOM.
+## Pacote de fabricação (o que enviar para a JLC)
+
+1. **Gerber:** `export/v0.7/proteus_0_7_gerber.zip` — **inalterado** (o PCB não mudou).
+2. **BOM:** `proteus-bom-jlc-stage0.csv`.
+3. **CPL/posição:** `proteus-top-pos-stage0.csv` (casa 1:1 com a BOM; sem peças
+   sobrando para marcar como "do not place").
+
+O CPL original `export/v0.7/proteus-top-pos.csv` também funciona — a JLC apenas
+ignora na montagem os designadores que não estiverem na BOM (incl. os DNP de
+fábrica R1207/R1212/R1219/R1220, jumpers de modo do MAX9924, e a fiducial).
 
 ## O que é montado (Etapa 0)
 
