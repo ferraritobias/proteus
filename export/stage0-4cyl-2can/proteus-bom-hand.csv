@@ -1,0 +1,9 @@
+Comment,Designator,Footprint,MfrPN,Note
+56u eletrolitico,"C17,C1001",Capacitor_THT:CP_Radial_D8.0mm_P3.50mm,EEH-AZF1H560B,
+AMPSEAL 23p,J101,ampseal:ampseal-23,776228-1,
+AMPSEAL 35p preto,J102,ampseal:ampseal-35,776231-1,
+AMPSEAL 35p branco,J103,ampseal:ampseal-35-2,776231-2,
+Debug 2x05 1.27mm,J1502,Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical_SMD,FTSH-105-01-F-DV,Opcional (debug)
+USB_B vertical,"J1501,J1503",Connector_USB:USB_B_TE_5787834_Vertical,5787834-1,Instalar 1 das 3 opcoes de USB
+USB_B conn5,J1504,conn_5_2.5mm:conn_5_2.5mm,UB-20PMFP-LC7002,Opcao alternativa de USB
+Audio jack knock,J3,Connector_Audio:Jack_3.5mm_CUI_SJ1-3533NG_Horizontal,SJ1-3533NG,

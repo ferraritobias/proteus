@@ -1,0 +1,31 @@
+Comment,Designator,Footprint,Categoria
+MIC4427 (ign cil 5-8),"U1701,U1702",Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,driver de expansao
+MIC4427 (ign cil 9-12),"U1801,U1802",Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,driver de expansao
+VNLD5160 (low-side 9-12),"U401,U402",Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,driver de expansao
+VNLD5160 (low-side 13-16),"U501,U502",Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,driver de expansao
+100n,C1701,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+100n,C1704,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+100n,C1801,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+100n,C1804,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+100,R1701,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1702,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1703,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1704,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1801,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1802,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1803,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+100,R1804,Resistor_SMD:R_0805_2012Metric,passivo do banco de expansao
+1k,RN401,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+1k,RN402,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+1k,RN501,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+1k,RN502,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+1k,RN1701,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+1k,RN1801,Resistor_SMD:R_Array_Convex_4x0603,passivo do banco de expansao
+10n,C1702,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1703,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1705,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1706,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1802,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1803,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1805,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
+10n,C1806,Capacitor_SMD:C_0603_1608Metric,passivo do banco de expansao
