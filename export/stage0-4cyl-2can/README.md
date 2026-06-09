@@ -43,10 +43,12 @@ fábrica R1207/R1212/R1219/R1220, jumpers de modo do MAX9924, e a fiducial).
 
 ## Resolução de shortfall JLC (estoque)
 
-- **LEDs de status unificados numa cor (verde)**: D1502, D1504, D1505, D1506,
-  D1507 agora numa linha só, LCSC `C9900025458` (peça house JLCPCB, 0603 verde).
-  Elimina os tipos Extended/shortfall das cores azul/laranja/vermelha. A cor não
-  tem efeito em firmware — é só indicador visual. **Confirmar estoque no carrinho.**
+- **LEDs de status em 2 cores house part JLCPCB** (estoque profundo, sem taxa de
+  feeder), trocando os Everlight coloridos que deram shortfall:
+  - Verde `C9900025458` → D1502, D1506
+  - Vermelho `C9900218132` → D1504, D1505, D1507
+  Azul/laranja não tinham house part confiável; se quiser essas cores, selecione
+  na JLC se houver estoque (a cor não afeta firmware). **Confirmar no carrinho.**
 - **Ainda em shortfall (funcionais — trocar por equivalente EM ESTOQUE na JLC,
   preferir Basic):**
   - `3.3n` 0805 (C1901, C1902) — manter 3.3nF / 0805; LCSC C53175 sem estoque.
