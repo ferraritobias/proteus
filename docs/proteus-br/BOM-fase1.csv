@@ -1,0 +1,63 @@
+grupo,funcao,qtd,part_number,encapsulamento,lcsc,fonte_alternativa,observacao
+MCU,Microcontrolador,1,STM32F427ZGT6,LQFP-144,C117816,Mouser/DK,FIREWALL; comprar cedo (285 un. na LCSC jun/2026)
+MCU,Cristal HSE 8 MHz,1,8MHz 5032,SMD 5.0x3.2,C115962,,igual v0.7 (Y1501)
+MCU,Referencia 3V3 do VREF+,1,REF3333AIDBZR,SOT-23,C130016,DK 1681880,FIREWALL
+MCU,Protecao USB,1,USBLC6-2SC6,SOT-23-6,C7519,,FIREWALL
+MCU,Conector USB-B,1,5787834-1,THT vertical,,Mouser/TE,unico USB da placa
+MCU,Header SWD,1,FTSH-105-01-F-DV (2x5 1.27mm),SMD,,Mouser/Samtec,ou generico 1.27mm
+MCU,Botao BOOT0/RESET,2,SW_SPST EVQQ2,SMD,C318887,,igual v0.7
+MCU,LED status unico,1,LED 0603,0603,C72038 (laranja),,pino: ver decisao pendente 4 (PE6 ou PE5)
+PSU,Buck 5V,1,LMR14020SDDAR,HSOP-8-EP,C187824,,unico exposed-pad alem do LQFP — aceito (decisao 4 do prompt: minimo de ar quente)
+PSU,LDO 3V3,1,AMS1117-3.3,SOT-223,C6186,,
+PSU,Tracker 5V sensores n.1,1,TLE4251D,PG-TO252-5,C539669,Mouser,substitui TLS115D0E; mantem tracking
+PSU,TVS entrada,1,SM15T33CA,SMC,C133707 (conferir),Mouser/Newark,estoque LCSC ambiguo
+PSU,Schottky entrada/buck,4,SS34/D_Schottky SMA,SMA,C8678,,D101-D104/D901/D903 da v0.7
+PSU,Polyfuse,2,1206 polyfuse,1206,C207035,,F101/F102
+PSU,Indutor buck 10uH,1,MWSA0503-100M,MWSA0503,C408412,,
+PSU,Indutor filtro 2.2uH,1,L 1210,1210,C75646,,
+PSU,Ferrite bead,1,FB 0805,0805,C1015,,
+PSU,Eletrolitico 56uF 50V,2,EEH-AZF1H560B,radial THT 8mm,,Mouser/DK,bulk entrada
+CAN,Transceiver CAN1,1,TJA1051T/3,SOIC-8,C38695,,FIREWALL OpenBLT via CAN1
+CAN,TVS CAN,1,PESD1CAN-UX,SOT-323,C152727,,no CAN1 (o do CAN2 fica DNP)
+LOWSIDE,Driver lowside LS1-8,4,VNLD5160TR-E,SOIC-8,C377942,ST eStore/Mouser,dual: 4 chips = 8 canais; ver decisao pendente 1
+IGN,Driver ignicao IGN1-4,2,TC4427ACOA713,SOIC-8,C144234,Mouser (MIC4427YM),pin-compativel MIC4427; ver decisao pendente 6
+TRIGGER,Buffer schmitt HALL1-2,1,SN74LVC2G17DBVR,SOT-23-6,C10429,,
+ANALOG,Opamp buffer AV/knock,3,MCP6004 SOIC-14,SOIC-14,C7378,,U701/U801 (AV1-8) + U5 (knock)
+ANALOG,Opamp knock,1,MCP6002-xSN,SOIC-8,C7377,,U7
+ANALOG,Protecao ESD entradas,3,SRV05-4,SOT-23-6,C13612,,AV1-8 + AT + USB (D1501)
+R,Serie IGN 100R,4,100R 1%,0805,a definir 0805,,funcional (era C17408)
+R,Terminacao CAN 120R,1,120R 1%,0603,C22787,,so CAN1 na fase 1
+R,1k (knock/COUT/entradas lowside/LED),~16,1k 1%,0603,a definir 0603,,absorve 330R dos LEDs
+R,2.7k pullup AT + redes hall,~8,2.7k 1%,0603,C13167,,FUNCIONAL bias_resistor=2700
+R,4.7k pullups status,~6,4.7k 1%,0603,a definir 0603,,
+R,5.6k divisor AV (topo),12,5.6k 1%,0603,a definir 0603,,FUNCIONAL coef 1.56
+R,10k (divisores/pullups/FB),~30,10k 1%,0603,a definir 0603,,FUNCIONAL nos divisores
+R,12k (knock + FB buck),3,12k 1%,0603,a definir 0603,,FUNCIONAL
+R,33k filtro knock,2,33k 1%,0603,a definir 0603,,FUNCIONAL (so canal 1)
+R,68k FB buck,1,68k 1%,0603,a definir 0603,,FUNCIONAL
+R,82k divisor VBatt,1,82k 1%,0603,C23254,,FUNCIONAL coef 9.2
+R,100k (knock/straps),~6,100k 1%,0603,a definir 0603,,
+R,470k bias buffers,~10,470k 1%,0603,a definir 0603,,FUNCIONAL
+R,1R buck,1,1R,0603,a definir 0603,,FUNCIONAL
+C,33p cristal,2,33p C0G,0603,a definir 0603,,FUNCIONAL
+C,47p knock,1,47p C0G,0603,a definir 0603,,FUNCIONAL (canal 1)
+C,330p (knock + FF buck),2,330p C0G,0603,a definir 0603,,FUNCIONAL
+C,680p knock,1,680p C0G,0603,a definir 0603,,FUNCIONAL (canal 1)
+C,1n filtros trigger,~6,1n X7R,0603,C1588,,FUNCIONAL (hall 1-2 + reservas)
+C,3.3n knock,1,3.3n X7R,0805,C53175,,FUNCIONAL (canal 1)
+C,10n bypass,~12,10n X7R,0603,C57112,,
+C,100n decoupling,~35,100n X7R 25V+,0603,C14663,,
+C,1u trackers,2,1u X7R 25V,0603,C15849,,FUNCIONAL estabilidade LDO
+C,2.2u VCAP,2,2.2u X7R,0603,C23630,,FUNCIONAL exigencia ST
+C,4.7u bulk local,~8,4.7u X7R 16V+,0603,C19666,,
+C,10u saida buck/bulk,~4,10u X7R 25V,1206,C13585,,FUNCIONAL ripple
+CONN,Header Superseal 26v vertical,4,6437288-6 (conferir keying),THT,,Mouser/TE/Newark,C1-C4; matriz de keying na decisao pendente 5
+CONN,Housing plug key1,1,3-1437290-7,,,Mouser/Corsa,C1
+CONN,Housing plug key2,1,3-1437290-8,,,Mouser/KSV,C2
+CONN,Housing plug key3,1,a confirmar (26v key 3),,,EMH/TE,C3
+CONN,Housing 4o conector,1,ver decisao pendente 5,,,,C4
+CONN,Terminal 0.35-0.5mm2,~80,kit 24-20AWG Superseal 1.0,,,Carrot Top/Corsa,sinais
+CONN,Terminal 0.75-0.85mm2,~30,3-1447221-3,,,TE/Mouser,potencia 18AWG
+CONN,Tampao cavidade,~40,4-1437284-3,,,TE,reservas e DNP
+CONN,Header expansao 2x10 2.54,1,box header IDC generico,THT,a definir,,PN no Prompt 3
+CONN,microSD,0,—,,,,DNP na fase 1 (footprint Wuerth 693072010801)

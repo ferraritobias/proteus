@@ -1,0 +1,72 @@
+grupo,funcao,qtd_total,part_number,encapsulamento,lcsc,fonte_alternativa,fase,observacao
+MCU,Microcontrolador,1,STM32F427ZGT6,LQFP-144,C117816,Mouser/DK,1,FIREWALL
+MCU,Cristal HSE 8 MHz,1,8MHz 5032,SMD 5.0x3.2,C115962,,1,
+MCU,Referencia 3V3 VREF+,1,REF3333AIDBZR,SOT-23,C130016,DK,1,
+MCU,Protecao USB,1,USBLC6-2SC6,SOT-23-6,C7519,,1,
+MCU,Conector USB-B,1,5787834-1,THT vertical,,Mouser/TE,1,
+MCU,Header SWD 2x5 1.27mm,1,FTSH-105-01-F-DV,SMD,,Mouser,1,
+MCU,Botoes BOOT0/RESET,2,EVQQ2,SMD,C318887,,1,
+MCU,LED status,1,LED 0603,0603,C72038,,1,pino conforme decisao 4
+MCU,microSD,1,693072010801,SMD,C164170,Wuerth,2,SPI3 PC10-PC12+PD2
+PSU,Buck 5V,1,LMR14020SDDAR,HSOP-8-EP,C187824,,1,
+PSU,LDO 3V3,1,AMS1117-3.3,SOT-223,C6186,,1,
+PSU,Tracker 5V n.1,1,TLE4251D,PG-TO252-5,C539669,Mouser,1,substitui TLS115
+PSU,Tracker 5V n.2,1,TLE4251D,PG-TO252-5,C539669,Mouser,2,
+PSU,TVS entrada,1,SM15T33CA,SMC,C133707 (conferir),Mouser/Newark,1,
+PSU,Schottky SMA,6,SS34 classe,SMA,C8678,,1,
+PSU,Polyfuse 1206,2,polyfuse,1206,C207035,,1,
+PSU,Indutor 10uH buck,1,MWSA0503-100M,MWSA0503,C408412,,1,
+PSU,Indutor 2.2uH filtro,1,L1210,1210,C75646,,1,
+PSU,Ferrite 0805,1,FB,0805,C1015,,1,
+PSU,Eletrolitico 56u/50V,2,EEH-AZF1H560B,THT radial,,Mouser,1,
+CAN,Transceiver CAN1,1,TJA1051T/3,SOIC-8,C38695,,1,FIREWALL OpenBLT
+CAN,Transceiver CAN2,1,TJA1051T/3,SOIC-8,C38695,,2,
+CAN,TVS CAN,2,PESD1CAN-UX,SOT-323,C152727,,1 e 2,
+LOWSIDE,Driver dual LS1-16,8,VNLD5160TR-E,SOIC-8,C377942,ST eStore,1 (4x) e 2 (4x),ver decisao 1; alternativas BTF3050TE C534724 ou IRLR2905 C3010+SMCJ33CA
+HIGHSIDE,Switch HS1-4,4,BTS4175SGA,SOIC-8,C152451 (esgotado),Mouser,2,
+IGN,Driver IGN1-12,6,TC4427ACOA713,SOIC-8,C144234,Mouser MIC4427YM,1 (2x) e 2 (4x),ver decisao 6
+ETB,Ponte H ETB1/ETB2,2,TLE9201SG,PG-DSO-12,,Mouser/DK TLE9201SGAUMA1,2,IFX9201SG (C112633) como gemeo industrial
+TRIGGER,Buffer schmitt,3,SN74LVC2G17DBVR,SOT-23-6,C10429,,1 (1x) e 2 (2x),
+TRIGGER,Condicionador VR,2,MAX9924UAUB+T,uMAX-10,C5145181,DK,2,footprint desde v1
+ANALOG,Opamp quad,5,MCP6004 SOIC-14,SOIC-14,C7378,,1 (3x) e 2 (2x),
+ANALOG,Opamp dual knock,1,MCP6002-xSN,SOIC-8,C7377,,1,
+ANALOG,ESD array,5,SRV05-4,SOT-23-6,C13612,,1 (3x) e 2 (2x),
+R,1R buck,1,1R,0603,a definir,,1,FUNCIONAL
+R,100R serie IGN,12,100R 1%,0805,a definir,,1 (4x) e 2 (8x),FUNCIONAL
+R,120R CAN/highside,6,120R 1%,0603,C22787,,1 e 2,FUNCIONAL terminacao
+R,1k,~24,1k 1%,0603,a definir,,1 e 2,inclui ex-arrays e LED
+R,2.7k,16,2.7k 1%,0603,C13167,,1 e 2,FUNCIONAL AT pullup + hall
+R,4.7k,14,4.7k 1%,0603,a definir,,1 e 2,FUNCIONAL rede MAX9924
+R,5.6k,16,5.6k 1%,0603,a definir,,1 e 2,FUNCIONAL divisor AV
+R,10k,~40,10k 1%,0603,a definir,,1 e 2,FUNCIONAL divisores
+R,12k,3,12k 1%,0603,a definir,,1,FUNCIONAL
+R,33k,4,33k 1%,0603,a definir,,1 e 2,FUNCIONAL knock
+R,68k,1,68k 1%,0603,a definir,,1,FUNCIONAL FB buck
+R,82k,1,82k 1%,0603,C23254,,1,FUNCIONAL VBatt
+R,100k,~8,100k 1%,0603,a definir,,1,
+R,470k,16,470k 1%,0603,a definir,,1 e 2,FUNCIONAL bias
+C,33p C0G,2,33p,0603,a definir,,1,FUNCIONAL cristal
+C,47p C0G,2,47p,0603,a definir,,1 e 2,FUNCIONAL knock
+C,330p C0G,3,330p,0603,a definir,,1 e 2,FUNCIONAL
+C,680p C0G,2,680p,0603,a definir,,1 e 2,FUNCIONAL knock
+C,1n X7R,14,1n,0603,C1588,,1 e 2,FUNCIONAL triggers
+C,3.3n X7R,2,3.3n,0805,C53175,,1 e 2,FUNCIONAL knock
+C,10n X7R,~23,10n,0603,C57112,,1 e 2,
+C,100n X7R,~42,100n,0603,C14663,,1 e 2,
+C,1u X7R,~7,1u,0603,C15849,,1 e 2,FUNCIONAL trackers
+C,2.2u X7R,2,2.2u,0603,C23630,,1,FUNCIONAL VCAP
+C,4.7u X7R,~8,4.7u,0603,C19666,,1,
+C,10u X7R,~6,10u,1206,C13585,,1 e 2,FUNCIONAL buck/ETB
+CONN,Header Superseal 26v,4,6437288-6 (keying a confirmar),THT,,Mouser/TE,1,C1-C4
+CONN,Housing key1,1,3-1437290-7,,,Corsa/Mouser,1,C1
+CONN,Housing key2,1,3-1437290-8,,,KSV/Mouser,1,C2
+CONN,Housing key3,1,a confirmar,,,EMH,1,C3
+CONN,Housing C4,1,ver decisao 5,,,,1,
+CONN,Terminais 24-20AWG,~150,kit Superseal 1.0,,,Carrot Top,1,
+CONN,Terminais 18AWG,~40,3-1447221-3,,,TE/Mouser,1,
+CONN,Tampoes cavidade,~60,4-1437284-3,,,TE,1,
+CONN,Header expansao 2x10,1,box header 2.54 generico,THT,a definir,,1,
+REMOVIDOS,Barometro,0,LPS25HB,,,,—,removido (decisao previa)
+REMOVIDOS,2o USB,0,—,,,,—,removido
+REMOVIDOS,RTC/bateria,0,BT1+D1503+R1513,,,,—,removido (EFI_RTC=FALSE no F4)
+REMOVIDOS,LEDs extras,0,4x LED 0603,,,,—,só 1 LED fica

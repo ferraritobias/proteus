@@ -1,0 +1,154 @@
+# Proteus-BR — Conector C4 "TRIGGERS / COMUNICAÇÃO"
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição D.
+# Só sinais de baixa corrente: hall/digitais (buffer schmitt SN74LVC2G17),
+# VR diferencial (MAX9924 — footprint não populado na Fase 1), CAN1/CAN2.
+# Pares VR e CAN em pinos adjacentes (par trançado no chicote).
+# ETB foi movido para o C2 (ver nota lá).
+# Fase 1 popula: HALL1-2 (Digital 1-2), CAN1, 5V/GND.
+# HALL3-6, VR1/2 (MAX9924) e CAN2 = footprints não populados.
+
+pins:
+  - pin: 1
+    function: 5V sensores rail 1 (alimentação de sensores hall de trigger), 20 AWG
+    type: 5v
+    color: red
+
+  - pin: 2
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 3
+    id: [C6, C6]
+    class: [event_inputs, switch_inputs]
+    function: Digital 1 / HALL1 — trigger primário default (cranque), 22 AWG
+    ts_name: C4.3 - HALL1 (crank)
+    type: hall
+
+  - pin: 4
+    id: [E11, E11]
+    class: [event_inputs, switch_inputs]
+    function: Digital 2 / HALL2 (CAM sugerido), 22 AWG
+    ts_name: C4.4 - HALL2 (cam)
+    type: hall
+
+  - pin: 5
+    id: [E12, E12]
+    class: [event_inputs, switch_inputs]
+    function: Digital 3 / HALL3 (VSS sugerido; footprint não populado na Fase 1), 22 AWG
+    ts_name: C4.5 - HALL3
+    type: hall
+
+  - pin: 6
+    id: [E14, E14]
+    class: [event_inputs, switch_inputs]
+    function: Digital 4 / HALL4 (footprint não populado na Fase 1), 22 AWG
+    ts_name: C4.6 - HALL4
+    type: hall
+
+  - pin: 7
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 8
+    id: [E7, E7]
+    class: [event_inputs, switch_inputs]
+    function: VR1+ entrada diferencial MAX9924 n.1 (saída do condicionador em PE7; footprint não populado na Fase 1) — par trançado com pino 9
+    ts_name: C4.8 - VR1+
+    type: vr
+
+  - pin: 9
+    function: VR1- entrada diferencial MAX9924 n.1, par do pino 8
+    type: vr
+
+  - pin: 10
+    function: Blindagem do par VR1 (GND, aterrar só do lado da ECU)
+    type: gnd
+    color: black
+
+  - pin: 11
+    function: CAN1 H (transceiver TJA1051T-3 n.1; OpenBLT/reflash — par trançado com pino 12), 22 AWG
+    type: can
+    color: yellow
+
+  - pin: 12
+    function: CAN1 L (par do pino 11), 22 AWG
+    type: can
+    color: green
+
+  - pin: 13
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 14
+    function: 5V sensores rail 1, 20 AWG
+    type: 5v
+    color: red
+
+  - pin: 15
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 16
+    id: [E13, E13]
+    class: [event_inputs, switch_inputs]
+    function: Digital 5 / HALL5 (footprint não populado na Fase 1), 22 AWG
+    ts_name: C4.16 - HALL5
+    type: hall
+
+  - pin: 17
+    id: [E15, E15]
+    class: [event_inputs, switch_inputs]
+    function: Digital 6 / HALL6 (footprint não populado na Fase 1), 22 AWG
+    ts_name: C4.17 - HALL6
+    type: hall
+
+  - pin: 18
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 19
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 20
+    id: [E8, E8]
+    class: [event_inputs, switch_inputs]
+    function: VR2+ entrada diferencial MAX9924 n.2 (saída do condicionador em PE8; footprint não populado na Fase 1) — par trançado com pino 21
+    ts_name: C4.20 - VR2+
+    type: vr
+
+  - pin: 21
+    function: VR2- entrada diferencial MAX9924 n.2, par do pino 20
+    type: vr
+
+  - pin: 22
+    function: Blindagem do par VR2 (GND, aterrar só do lado da ECU)
+    type: gnd
+    color: black
+
+  - pin: 23
+    function: CAN2 H (transceiver n.2; footprint não populado na Fase 1 — par trançado com pino 24), 22 AWG
+    type: can
+    color: yellow
+
+  - pin: 24
+    function: CAN2 L (par do pino 23), 22 AWG
+    type: can
+    color: green
+
+  - pin: 25
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 26
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+info:
+  title: Proteus-BR C4 Triggers/Comunicacao
+  name: C4
+  board: Proteus-BR
