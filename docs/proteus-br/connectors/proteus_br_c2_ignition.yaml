@@ -1,0 +1,169 @@
+# Proteus-BR — Conector C2 "IGNIÇÃO / ETB"
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição B.
+# AJUSTE sobre a proposta inicial: ETB1±/ETB2± movidos do C4 para cá —
+# são saídas de potência chaveada (até ~3 A contínuos / 6 A pico por ponte
+# TLE9201) e violariam a regra "nenhum sinal sensível adjacente a alta
+# corrente" se ficassem junto de VR/CAN no C4.
+# Saídas IGN são lógicas 5 V (buffer MIC4427/TC4427A) para bobinas smart;
+# alimentação de potência das bobinas vem do chicote (relé), não da ECU.
+# Fase 1 popula: IGN1-4 + GNDs. IGN5-12 e ETB1/2 = footprints não populados.
+
+pins:
+  - pin: 1
+    function: GND lógico para retorno de sinal das bobinas, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 2
+    id: D4
+    class: outputs
+    function: Ignição 1 (lógico 5V), 20 AWG
+    ts_name: C2.2 - IGN1
+    type: ign
+
+  - pin: 3
+    id: D3
+    class: outputs
+    function: Ignição 2 (lógico 5V), 20 AWG
+    ts_name: C2.3 - IGN2
+    type: ign
+
+  - pin: 4
+    id: C9
+    class: outputs
+    function: Ignição 3 (lógico 5V), 20 AWG
+    ts_name: C2.4 - IGN3
+    type: ign
+
+  - pin: 5
+    id: C8
+    class: outputs
+    function: Ignição 4 (lógico 5V), 20 AWG
+    ts_name: C2.5 - IGN4
+    type: ign
+
+  - pin: 6
+    id: C7
+    class: outputs
+    function: Ignição 5 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.6 - IGN5
+    type: ign
+
+  - pin: 7
+    id: G8
+    class: outputs
+    function: Ignição 6 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.7 - IGN6
+    type: ign
+
+  - pin: 8
+    function: GND lógico para retorno de sinal das bobinas, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 9
+    id: D12
+    class: outputs
+    function: ETB1 OUT+ (ponte TLE9201 n.1; footprint não populado na Fase 1), 18 AWG
+    ts_name: C2.9 - ETB1+
+    type: etb
+
+  - pin: 10
+    function: ETB1 OUT- (par do pino 9; footprint não populado na Fase 1), 18 AWG
+    ts_name: C2.10 - ETB1-
+    type: etb
+
+  - pin: 11
+    function: RESERVA (sem conexão na v1; cavidade selada com tampão 4-1437284-3)
+    type: reserved
+
+  - pin: 12
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 13
+    function: GND lógico, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 14
+    function: GND lógico para retorno de sinal das bobinas, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 15
+    id: G7
+    class: outputs
+    function: Ignição 7 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.15 - IGN7
+    type: ign
+
+  - pin: 16
+    id: G6
+    class: outputs
+    function: Ignição 8 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.16 - IGN8
+    type: ign
+
+  - pin: 17
+    id: G5
+    class: outputs
+    function: Ignição 9 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.17 - IGN9
+    type: ign
+
+  - pin: 18
+    id: G4
+    class: outputs
+    function: Ignição 10 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.18 - IGN10
+    type: ign
+
+  - pin: 19
+    id: G3
+    class: outputs
+    function: Ignição 11 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.19 - IGN11
+    type: ign
+
+  - pin: 20
+    id: G2
+    class: outputs
+    function: Ignição 12 (lógico 5V; footprint não populado na Fase 1), 20 AWG
+    ts_name: C2.20 - IGN12
+    type: ign
+
+  - pin: 21
+    function: GND lógico, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 22
+    id: D13
+    class: outputs
+    function: ETB2 OUT+ (ponte TLE9201 n.2; footprint não populado na Fase 1), 18 AWG
+    ts_name: C2.22 - ETB2+
+    type: etb
+
+  - pin: 23
+    function: ETB2 OUT- (par do pino 22; footprint não populado na Fase 1), 18 AWG
+    ts_name: C2.23 - ETB2-
+    type: etb
+
+  - pin: 24
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 25
+    function: RESERVA (sem conexão na v1)
+    type: reserved
+
+  - pin: 26
+    function: GND lógico, 20 AWG
+    type: gnd
+    color: black
+
+info:
+  title: Proteus-BR C2 Ignicao/ETB
+  name: C2
+  board: Proteus-BR

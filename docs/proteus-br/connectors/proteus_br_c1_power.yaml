@@ -1,0 +1,181 @@
+# Proteus-BR — Conector C1 "POTÊNCIA/INJEÇÃO"
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição A.
+# Formato compatível com firmware/config/boards/proteus/connectors/*.yaml da rusEFI.
+# Mapeamento MCU<->função idêntico ao PINOUT-CONTRACT (docs/proteus-br/PINOUT-CONTRACT.csv).
+# Fase 1 popula: 12V_RAW, GND, LS1-8. LS9-16 e HS1-4 = footprints não populados.
+
+pins:
+  - pin: 1
+    function: 12V bateria (alimentação da ECU e dos highsides), 18 AWG — máx. do terminal Superseal 1.0; paralelo com pino 2
+    type: 12v
+    color: red
+
+  - pin: 2
+    function: 12V bateria (paralelo com pino 1 para dividir corrente), 18 AWG
+    type: 12v
+    color: red
+
+  - pin: 3
+    function: GND de potência (retorno de carga), 18 AWG, paralelo com pinos 14-16
+    type: gnd
+    color: black
+
+  - pin: 4
+    id: D7
+    class: outputs
+    function: Lowside 1 (Injetor 1), 18 AWG
+    ts_name: C1.4 - LS1 (Inj 1)
+    type: inj
+
+  - pin: 5
+    id: G9
+    class: outputs
+    function: Lowside 2 (Injetor 2), 18 AWG
+    ts_name: C1.5 - LS2 (Inj 2)
+    type: inj
+
+  - pin: 6
+    id: G10
+    class: outputs
+    function: Lowside 3 (Injetor 3), 18 AWG
+    ts_name: C1.6 - LS3 (Inj 3)
+    type: inj
+
+  - pin: 7
+    id: G11
+    class: outputs
+    function: Lowside 4 (Injetor 4), 18 AWG
+    ts_name: C1.7 - LS4 (Inj 4)
+    type: inj
+
+  - pin: 8
+    id: G12
+    class: outputs
+    function: Lowside 5 (Injetor 5), 18 AWG
+    ts_name: C1.8 - LS5 (Inj 5)
+    type: inj
+
+  - pin: 9
+    id: G13
+    class: outputs
+    function: Lowside 6 (Injetor 6), 18 AWG
+    ts_name: C1.9 - LS6 (Inj 6)
+    type: inj
+
+  - pin: 10
+    id: G14
+    class: outputs
+    function: Lowside 7 (Injetor 7), 18 AWG
+    ts_name: C1.10 - LS7 (Inj 7)
+    type: inj
+
+  - pin: 11
+    id: B4
+    class: outputs
+    function: Lowside 8 (Injetor 8), 18 AWG
+    ts_name: C1.11 - LS8 (Inj 8)
+    type: inj
+
+  - pin: 12
+    id: A9
+    class: outputs
+    function: Highside 1 (footprint, não populado na Fase 1), 18 AWG
+    ts_name: C1.12 - HS1
+    type: hs
+
+  - pin: 13
+    id: A8
+    class: outputs
+    function: Highside 2 (footprint, não populado na Fase 1), 18 AWG
+    ts_name: C1.13 - HS2
+    type: hs
+
+  - pin: 14
+    function: GND de potência (retorno de carga), 18 AWG
+    type: gnd
+    color: black
+
+  - pin: 15
+    function: GND de potência (retorno de carga), 18 AWG
+    type: gnd
+    color: black
+
+  - pin: 16
+    function: GND de potência (retorno de carga), 18 AWG
+    type: gnd
+    color: black
+
+  - pin: 17
+    id: B5
+    class: outputs
+    function: Lowside 9 (footprint, não populado na Fase 1), 18 AWG
+    ts_name: C1.17 - LS9
+    type: inj
+
+  - pin: 18
+    id: B6
+    class: outputs
+    function: Lowside 10 (default relé de bomba; footprint não populado na Fase 1), 18 AWG
+    ts_name: C1.18 - LS10 (bomba)
+    type: inj
+
+  - pin: 19
+    id: B7
+    class: outputs
+    function: Lowside 11 (default relé de ventoinha; footprint não populado na Fase 1), 18 AWG
+    ts_name: C1.19 - LS11 (fan)
+    type: inj
+
+  - pin: 20
+    id: B8
+    class: outputs
+    function: Lowside 12 (default relé principal; footprint não populado na Fase 1), 18 AWG
+    ts_name: C1.20 - LS12 (main relay)
+    type: inj
+
+  - pin: 21
+    id: B9
+    class: outputs
+    function: Lowside 13 (footprint, não populado na Fase 1), 20 AWG
+    ts_name: C1.21 - LS13
+    type: inj
+
+  - pin: 22
+    id: E0
+    class: outputs
+    function: Lowside 14 (footprint, não populado na Fase 1), 20 AWG
+    ts_name: C1.22 - LS14
+    type: inj
+
+  - pin: 23
+    id: E1
+    class: outputs
+    function: Lowside 15 (footprint, não populado na Fase 1), 20 AWG
+    ts_name: C1.23 - LS15
+    type: inj
+
+  - pin: 24
+    id: E2
+    class: outputs
+    function: Lowside 16 (footprint, não populado na Fase 1), 20 AWG
+    ts_name: C1.24 - LS16
+    type: inj
+
+  - pin: 25
+    id: D15
+    class: outputs
+    function: Highside 3 (footprint, não populado na Fase 1), 18 AWG
+    ts_name: C1.25 - HS3
+    type: hs
+
+  - pin: 26
+    id: D14
+    class: outputs
+    function: Highside 4 (footprint, não populado na Fase 1), 18 AWG
+    ts_name: C1.26 - HS4
+    type: hs
+
+info:
+  title: Proteus-BR C1 Potencia/Injecao
+  name: C1
+  board: Proteus-BR

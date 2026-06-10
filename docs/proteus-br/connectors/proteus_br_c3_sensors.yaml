@@ -1,0 +1,176 @@
+# Proteus-BR — Conector C3 "SENSORES"
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição C.
+# Entradas AV: divisor 5,6k/10k + 100n (coeficiente 1,56 do firmware).
+# Entradas AT: pullup 2,7 kΩ para 5V (bias_resistor 2700 do firmware).
+# Knock: entrada AC para ADC3 PF4/PF5 (BOOT — hardcoded, imutável).
+# Fase 1 popula: 5V_SENSOR_1, AV1-8, AT1-4, KNOCK1.
+# 5V_SENSOR_2 (tracker #2), AV9-11 e KNOCK2 = footprints não populados.
+
+pins:
+  - pin: 1
+    function: 5V sensores, rail 1 (tracker TLE4251D n.1), 20 AWG
+    type: 5v
+    color: red
+
+  - pin: 2
+    function: GND sensores (retorno analógico limpo), 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 3
+    id: EFI_ADC_10
+    class: analog_inputs
+    function: Analógica AV1 (default MAP), 22 AWG
+    ts_name: C3.3 - AV1 (MAP)
+    type: av
+
+  - pin: 4
+    id: EFI_ADC_11
+    class: analog_inputs
+    function: Analógica AV2 (default TPS1), 22 AWG
+    ts_name: C3.4 - AV2 (TPS1)
+    type: av
+
+  - pin: 5
+    id: EFI_ADC_12
+    class: analog_inputs
+    function: Analógica AV3 (alias TPS1_2), 22 AWG
+    ts_name: C3.5 - AV3
+    type: av
+
+  - pin: 6
+    id: EFI_ADC_13
+    class: analog_inputs
+    function: Analógica AV4 (alias TPS2_1), 22 AWG
+    ts_name: C3.6 - AV4
+    type: av
+
+  - pin: 7
+    id: EFI_ADC_0
+    class: analog_inputs
+    function: Analógica AV5, 22 AWG
+    ts_name: C3.7 - AV5
+    type: av
+
+  - pin: 8
+    id: EFI_ADC_1
+    class: analog_inputs
+    function: Analógica AV6 (uso digital alternativo Gpio A1), 22 AWG
+    ts_name: C3.8 - AV6
+    type: av
+
+  - pin: 9
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 10
+    id: EFI_ADC_14
+    class: analog_inputs
+    function: Temperatura AT1 (pullup 2,7k/5V), 22 AWG
+    ts_name: C3.10 - AT1
+    type: at
+
+  - pin: 11
+    id: EFI_ADC_15
+    class: analog_inputs
+    function: Temperatura AT2 (default IAT; pullup 2,7k/5V), 22 AWG
+    ts_name: C3.11 - AT2 (IAT)
+    type: at
+
+  - pin: 12
+    id: EFI_ADC_38
+    class: analog_inputs
+    function: Knock 1 sinal (PF4, ADC3_IN14 — BOOT/hardcoded), par trançado/blindado com pino 13
+    ts_name: C3.12 - KNOCK1
+    type: knock
+
+  - pin: 13
+    function: Knock 1 retorno/blindagem (GND analógico), par do pino 12
+    type: gnd
+    color: black
+
+  - pin: 14
+    function: 5V sensores, rail 2 (tracker n.2; footprint não populado na Fase 1), 20 AWG
+    type: 5v
+    color: red
+
+  - pin: 15
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 16
+    id: EFI_ADC_2
+    class: analog_inputs
+    function: Analógica AV7 (alias PPS2; footprint não populado na Fase 1), 22 AWG
+    ts_name: C3.16 - AV7
+    type: av
+
+  - pin: 17
+    id: EFI_ADC_3
+    class: analog_inputs
+    function: Analógica AV8 (uso digital alternativo Gpio A3), 22 AWG
+    ts_name: C3.17 - AV8
+    type: av
+
+  - pin: 18
+    id: EFI_ADC_4
+    class: analog_inputs
+    function: Analógica AV9 (alias PPS1; footprint não populado na Fase 1), 22 AWG
+    ts_name: C3.18 - AV9
+    type: av
+
+  - pin: 19
+    id: EFI_ADC_5
+    class: analog_inputs
+    function: Analógica AV10 (default WBO/AFR analógico; footprint não populado na Fase 1), 22 AWG
+    ts_name: C3.19 - AV10 (WBO)
+    type: av
+
+  - pin: 20
+    id: EFI_ADC_6
+    class: analog_inputs
+    function: Analógica AV11 (uso digital alternativo Gpio A6; footprint não populado na Fase 1), 22 AWG
+    ts_name: C3.20 - AV11
+    type: av
+
+  - pin: 21
+    function: GND sensores, 20 AWG
+    type: gnd
+    color: black
+
+  - pin: 22
+    id: EFI_ADC_8
+    class: analog_inputs
+    function: Temperatura AT3 (default CLT; pullup 2,7k/5V), 22 AWG
+    ts_name: C3.22 - AT3 (CLT)
+    type: at
+
+  - pin: 23
+    id: EFI_ADC_9
+    class: analog_inputs
+    function: Temperatura AT4 (pullup 2,7k/5V), 22 AWG
+    ts_name: C3.23 - AT4
+    type: at
+
+  - pin: 24
+    id: EFI_ADC_39
+    class: analog_inputs
+    function: Knock 2 sinal (PF5, ADC3_IN15 — BOOT/hardcoded; footprint não populado na Fase 1), par com pino 25
+    ts_name: C3.24 - KNOCK2
+    type: knock
+
+  - pin: 25
+    function: Knock 2 retorno/blindagem (GND analógico), par do pino 24
+    type: gnd
+    color: black
+
+  - pin: 26
+    function: RESERVA (sem conexão na v1; sugerida para futura AV extra em PF3/ADC3_IN9)
+    type: reserved
+
+info:
+  title: Proteus-BR C3 Sensores
+  name: C3
+  board: Proteus-BR
