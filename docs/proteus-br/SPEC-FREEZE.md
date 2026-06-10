@@ -1,13 +1,14 @@
-# PROTEUS-BR — SPEC FREEZE (v1)
+# PROTEUS-BR — SPEC FREEZE (v1.1 — decisões do dono incorporadas)
 
 **Status:** especificação congelada para início do KiCad (Prompt 3). Nenhum
-arquivo KiCad foi gerado nesta etapa.
+arquivo KiCad foi gerado nesta etapa. As DECISÕES-PENDENTES da v1 foram
+respondidas pelo dono do projeto e estão registradas na seção G.
 **Base:** projeto rusEFI Proteus v0.7 deste repositório +
 `docs/proteus-br/PINOUT-CONTRACT.md` (imutável) + pesquisa de disponibilidade
 jun/2026 (fontes citadas).
 **Legenda:** itens marcados **PREMISSA** não têm evidência primária ainda e
-devem ser confirmados no Prompt 3; itens **DECISÃO-PENDENTE** estão listados no
-final e precisam de aprovação antes do Prompt 3.
+devem ser confirmados no Prompt 3; a seção G registra as decisões
+tomadas pelo dono sobre os pontos que estavam pendentes na v1.
 
 ---
 
@@ -22,7 +23,7 @@ Auditoria do KiCad v0.7 deste repo contra o contrato. Nada bloqueante; itens
 | 2 | Cristal HSE | **8 MHz** (Y1501, BOM C115962; caps 33p C1521/C1522) | valor livre (auto-detect, inteiro em MHz) | Manter 8 MHz — fecha o "NÃO RESOLVIDO #3" do contrato |
 | 3 | `5V_SENSOR_PG` | Os PG dos dois TLS115 vão a **PC14 (pad 8) e PC15 (pad 9)** do LQFP-144 (nets `/mcu/5V_SENSOR_1_PG`, `/mcu/5V_SENSOR_2_PG` no `proteus.kicad_pcb`), com pullups 10k R1006/R1007 | listava PC14/PC15 como "livres"; PG = "não resolvido #1" | **Resolvido:** é rede só de hardware, invisível ao firmware. BR roteia PG→PC14/PC15 com pullup 10k em footprint **DNP** (custo zero, diagnóstico futuro) |
 | 4 | RTC/bateria (novidade v0.7) | BT1 + D1503 schottky + R1513 no VBAT (`mcu.kicad_sch`) | F4: `EFI_RTC=FALSE`, LSE not fitted | **Remover** — peso morto no F4 |
-| 5 | LEDs | 5 LEDs (D1502/D1504–D1507, 330Ω R1508–R1512) p/ PE3/PE4/PE5/PE6 + power | PE3–PE6 são BOOT, mas LED ausente não quebra firmware | Manter **1 LED** (decisão já tomada) — ver DECISÃO-PENDENTE 4 (PE6 vs PE5) |
+| 5 | LEDs | 5 LEDs (D1502/D1504–D1507, 330Ω R1508–R1512) p/ PE3/PE4/PE5/PE6 + power | PE3–PE6 são BOOT, mas LED ausente não quebra firmware | **DECIDIDO (v1.1):** LED populado em **PE5 (running)** — heartbeat que pisca sempre que o firmware roda, diagnóstico sem ambiguidade. Footprints LED+R em PE3/PE4/PE6 ficam na placa como DNP (custo zero) |
 | 6 | Buffer schmitt triggers | BOM diz "74HC2G17" mas o código C10429 é **SN74LVC2G17DBVR** e o símbolo é `SN74LVC2G17DB` (`triggers.kicad_sch` U1202/U1207/U1208) | n/a | Adotar SN74LVC2G17DBVR (SOT-23-6, C10429, US$0,03) |
 | 7 | USB | 3 opções de conector (J1501/J1503 verticais, J1504 header) | PA11/PA12 BOOT | 1 conector apenas (decisão já tomada) |
 | 8 | Divisores/pullups analógicos | AV: 5,6k/10k + 100n por canal; VBatt: 82k (R1503)/10k (R1504); AT: 2,7k | 1,56 / 9,2 / 2700 Ω — byte a byte | **Copiar 1:1** (intocáveis, seção D) |
@@ -51,6 +52,11 @@ ETB1±/ETB2± saíram do C4 para o **C2**. Motivo: são saídas de ponte H com a
 ~3 A contínuos / 6 A de pico chaveadas em PWM — colocá-las ao lado de VR/CAN
 violaria a regra "nenhum sinal sensível adjacente a alta corrente". O C2 tem
 folga (12 IGN lógicos + GNDs) e é zona de atuadores.
+**Validado pelo dono (v1.1)**, junto com a diretriz: *a posição de cada pino
+dentro do conector não é requisito* — o layout do Prompt 3 pode reordenar
+pinos livremente para otimizar chicote e roteamento, desde que (a) os pares
+VR/CAN/ETB/knock continuem adjacentes, (b) retornos de potência e de sinal
+continuem separados, e (c) os YAML de `connectors/` sejam atualizados junto.
 
 Detalhe pino a pino (net, AWG, observação) está nos quatro YAML em
 `docs/proteus-br/connectors/` — resumo:
@@ -75,7 +81,7 @@ Detalhe pino a pino (net, AWG, observação) está nos quatro YAML em
 | 1, 8, 13, 14, 21, 26 | GND lógico/retorno bobina | 20 | |
 | 11, 12, 24, 25 | RESERVA | — | cavidade selada (tampão 4-1437284-3) |
 
-### C3 — SENSORES (keying 3, housing a confirmar — ver DECISÃO-PENDENTE 5)
+### C3 — SENSORES (keying 3, housing 26v key 3 — PN exato a fixar na compra)
 
 | Pinos | Função | AWG | Obs |
 |---|---|---|---|
@@ -89,7 +95,7 @@ Detalhe pino a pino (net, AWG, observação) está nos quatro YAML em
 | 24–25 | KNOCK2 sinal + retorno (par) | 22 blindado | DNP; PF5 (BOOT) |
 | 26 | RESERVA | — | sugerida p/ futura AV extra em PF3 (ADC3_IN9) |
 
-### C4 — TRIGGERS/COMUNICAÇÃO (keying 4 — ver DECISÃO-PENDENTE 5)
+### C4 — TRIGGERS/COMUNICAÇÃO (keying 1 repetido — housing 3-1437290-7, DECIDIDO v1.1; posição afastada do C1 + housing de cor distinta)
 
 | Pinos | Função | AWG | Obs |
 |---|---|---|---|
@@ -120,8 +126,8 @@ Specs: dual lowside OMNIFET III, 160 mΩ/canal, 3,5 A, **clamp indutivo
 interno ~41 V**, entrada compatível com GPIO 3,3 V (projeto original prova),
 SOIC-8 soldável à mão.
 
-**Recomendação: manter VNLD5160TR-E** (linha de base), e congelar as duas
-alternativas abaixo como plano B de supply:
+**DECIDIDO (dono, v1.1): manter VNLD5160TR-E.** As duas alternativas abaixo
+ficam congeladas apenas como plano B de supply:
 
 | | Opção A — protegido pin-similar | Opção B — MOSFET lógico + TVS |
 |---|---|---|
@@ -148,18 +154,28 @@ alternativas abaixo como plano B de supply:
 
 ### C.2 Tracker 5 V dos sensores (original TLS115D0E ×2)
 
-TLS115D0EJ segue ativo na Infineon, mas não está na LCSC e o PG-DSO-8 com
-exposed pad é o pior pacote do projeto para solda manual.
+**DECIDIDO (dono, v1.1): manter o TLS115D0EJ original.** Fonte:
+Mouser/Digi-Key (TLS115D0EJXUMA1, DK 6559864 — não há na LCSC); produto
+ativo na Infineon (família garantida até ≥2038). Fase 1 monta 1; o #2 fica
+DNP.
 
-| | Opção A — tracker real (recomendada) | Opção B — LDO protegido (perde tracking) |
+*Ressalva registrada:* o PG-DSO-8 tem exposed pad — é a segunda exceção (além
+do LMR14020 HSOP-8-EP, que a placa original já tinha) à regra "zero ar
+quente". Mitigação de montagem manual: furo/via térmica de ~1,5 mm sob o pad
+para soldar o EP por baixo com ferro. As alternativas pesquisadas ficam
+documentadas como plano B de supply:
+
+| | Opção A — tracker real (plano B de supply) | Opção B — LDO protegido (perde tracking) |
 |---|---|---|
 | Peça | **Infineon TLE4251D** — tracker 400 mA, PG-TO252-5 (DPAK, sem exposed pad escondido), reverso + curto p/ bateria + curto p/ GND + térmica. LCSC **C539669**, US$0,955, 860 un. ([LCSC](https://lcsc.com/product-detail/voltage-regulators-linear-low-drop-out-ldo-regulators_infineon-technologies-tle4251d_C539669.html)) | **TI TPS7B6950QDCYRQ1** — 5 V fixo 150 mA, SOT-223, 40 V, limite de corrente + térmica. LCSC **C108469**, US$0,17 ([LCSC](https://www.lcsc.com/product-detail/Low-Dropout-Regulators-LDO_TI_TPS7B6950QDCYRQ1_TPS7B6950QDCYRQ1_C108469.html)) |
 | Referência de tracking | Segue o 5 V do buck (como o TLS115) — erro ratiométrico sensor↔ADC cancela | **Sem tracking**: rail do sensor e referência do ADC viram duas fontes independentes (±1–2% cada + deriva térmica) ⇒ ~2–4% de erro de ganho em MAP/TPS, calibrável a uma temperatura só |
 | Ressalva | — | Curto sustentado da saída para +bateria (cenário que o tracker tolera por projeto) precisa ser verificado no abs-max do TPS7B69xx antes de cravar |
 
-**Recomendação: TLE4251D** (Fase 1 monta 1; o #2 fica DNP). Fallback de
-baixa corrente: TLE4250-2G (50 mA, LCSC C976300) só serve se cada rail ficar
-abaixo de 50 mA — não recomendado.
+Fallback de baixa corrente: TLE4250-2G (50 mA, LCSC C976300) só serve se
+cada rail ficar abaixo de 50 mA — não recomendado. **Importante para o
+Prompt 3:** desenhar o footprint do tracker de forma a aceitar TLE4251D
+(PG-TO252-5) como alternativa ao TLS115 não é viável (pinagens diferentes);
+o footprint congelado é o PG-DSO-8 do TLS115.
 
 ### C.3 Mantidos — disponibilidade verificada
 
@@ -189,7 +205,7 @@ abaixo de 50 mA — não recomendado.
 | Housing plug 26 vias, key 1 | **3-1437290-7** | [TE](https://www.te.com/en/product-3-1437290-7.html), [Corsa Technic SS10-26S-1](https://www.corsa-technic.com/item.php?item_id=533) |
 | Housing plug 26 vias, key 2 | **3-1437290-8** | [TE](https://www.te.com/en/product-3-1437290-8.html), [KSV "Key 2"](https://www.ksvlooms.com/products/26-way-housing-te-amp-3-1437290-8-superseal-1-0-series-key-2) |
 | Housing key 3 | existe (usado em MoTeC M800) — PN exato a confirmar | [EMH "26 way key 3"](https://store.emhmotorsports.com/superseal-connector-26-way-key-3-motec/) |
-| Housing key 4 | **NÃO CONFIRMADO** | ver DECISÃO-PENDENTE 5 |
+| Housing do C4 | **3-1437290-7 (key 1 repetido — DECIDIDO v1.1)** | mitigação: C1 e C4 ficam nas extremidades opostas da borda e com identificação de cor |
 | Header PCB 26 vias vertical | **6437288-6** | [TE](https://www.te.com/en/product-6437288-6.html) |
 | Header PCB 26 vias reto/alternativas | 6473418-1 ([Newark](https://www.newark.com/te-connectivity/6473418-1/automotive-conn-str-hdr-26pos/dp/70AH9494)), 6473711-1 ([TE](https://www.te.com/en/product-6473711-1.html)); right-angle 9-6437287-9 (**PREMISSA**, confirmar keying de cada um) | |
 | Terminal fêmea 0,75–0,85 mm² (18 AWG), ouro | **3-1447221-3** | busca TE/distribuidores |
@@ -254,56 +270,57 @@ zero 0402; único pacote fora de 0603/0805/1206 é o eletrolítico THT.
 
 ## E. Dimensão e zoneamento da placa
 
-### Dimensão proposta: **170 × 110 mm**, conectores em L (RECOMENDADA)
+### Dimensão **DECIDIDA (dono, v1.1): 180 × 120 mm**, 4 conectores na borda longa única
 
-Justificativa:
+Consequências de engenharia (registradas):
 
-- Largura do header Superseal 26 vias ≈ 38–40 mm + folga de montagem
-  (**PREMISSA**; drawing TE no Prompt 3). Quatro em uma única borda exigem
-  ~4×43 + margens ≈ 190 mm > 180 mm ⇒ borda única só caberia esticando além
-  da faixa que você estipulou.
-- Em L: **C1 na borda curta esquerda** (potência entra pelo canto da PSU) e
-  **C2, C3, C4 na borda longa inferior** (3×43 ≈ 130 mm, sobra para furação).
-- 170×110 fica dentro da sua faixa (160×100–180×120), dá +68% de área sobre a
-  original (135×82,5) para acomodar DPAK/SOIC espaçados para ferro de solda,
-  e mantém painel <180 mm (custo de PCB e de caixa).
-- Alternativa borda única (180×120, todas as 4 na borda longa) fica
-  condicionada ao drawing real do header — ver DECISÃO-PENDENTE 3.
+- Largura do header Superseal 26 vias ≈ 38–40 mm (**PREMISSA**; drawing TE
+  no Prompt 3). 4×40 = 160 mm de headers em 180 mm de borda ⇒ ~5 mm entre
+  conectores e ~2,5 mm até cada canto. **Não sobra espaço para furos de
+  fixação nos dois cantos da borda dos conectores** — a furação dessa borda
+  vai entre os conectores ou recua para dentro da placa.
+- Se o drawing TE mostrar header >42 mm efetivos (com flange), a saída é
+  manter 180×120 e girar o C1 para a borda curta (volta o L) — fica como
+  contingência registrada, sem mudar o tamanho da placa.
+- Conectores numa borda única = caixa com chicote saindo num plano só (mesmo
+  conceito de enclosure da Proteus original).
+- 180×120 = +94% de área sobre a original (135×82,5): folga para DPAK/SOIC
+  espaçados para ferro de solda e para a área da placa-filha.
 
-### Zoneamento (vista superior, conectores embaixo/esquerda)
+### Zoneamento (vista superior, conectores embaixo)
 
 ```
- ┌──────────────────────────────────────────────────────────┐
- │  USB  SWD  microSD  LED  BOOT0/RESET     ÁREA FILHA      │
- │  (borda de serviço, topo)                LINUX 65×45     │
- │                                          + header 2×10   │
- │  PSU (buck+LDO+   MCU LQFP144    TRIGGERS (schmitt,      │
- │  trackers+TVS)    + REF3333      MAX9924) | CAN1/CAN2    │
- │                                                          │
- │C1│ LOWSIDE 16ch   ANALÓGICO (divisores,  │               │
- │26│ + HIGHSIDE 4ch  buffers, knock)       │               │
- │  │ IGN 6×TC4427 + 2×TLE9201              │               │
- ├──┴───┬─────────┬─────────┬─────────┬─────┴───────────────┤
- │      │ C2 IGN  │ C3 SENS │ C4 TRIG │                     │
- └──────┴─────────┴─────────┴─────────┴─────────────────────┘
+ ┌────────────────────────────────────────────────────────────┐
+ │  USB  SWD  microSD  LED  BOOT0/RESET      ÁREA FILHA       │
+ │  (borda de serviço, topo)                 LINUX 65×45      │
+ │                                           + header 2×10    │
+ │  PSU (buck+LDO+     MCU LQFP144     TRIGGERS (schmitt,     │
+ │  trackers+TVS)      + REF3333       MAX9924) | CAN1/CAN2   │
+ │                                                            │
+ │  LOWSIDE 16ch +     ANALÓGICO (divisores,                  │
+ │  HIGHSIDE 4ch       buffers, knock)                        │
+ │  IGN 6×TC4427 + 2×TLE9201                                  │
+ ├──────────┬──────────┬──────────┬──────────┬────────────────┤
+ │ C1 POTÊN │ C2 IGN   │ C3 SENS  │ C4 TRIG  │                │
+ └──────────┴──────────┴──────────┴──────────┴────────────────┘
 ```
 
-- **Zona potência (SW):** entrada 12V, polyfuses, SM15T33CA, buck; lowsides e
-  highsides colados no C1; TLE9201 entre C1 e C2. Plano GND de potência
-  costurado ao GND lógico num único ponto perto da PSU.
+- **Zona potência (SW, atrás do C1):** entrada 12V, polyfuses, SM15T33CA,
+  buck; lowsides e highsides colados no C1; TLE9201 entre C1 e C2. Plano GND
+  de potência costurado ao GND lógico num único ponto perto da PSU.
 - **Zona MCU (centro):** LQFP-144 + decoupling + REF3333; VCAP curtos.
-- **Zona analógica (centro-sul):** divisores/buffers/knock entre o C3 e o
-  MCU; GND analógico estrela.
-- **Zona triggers/comm (leste):** schmitt + MAX9924 + transceivers CAN perto
-  do C4.
+- **Zona analógica (centro-sul, atrás do C3):** divisores/buffers/knock
+  entre o C3 e o MCU; GND analógico estrela.
+- **Zona triggers/comm (SE, atrás do C4):** schmitt + MAX9924 +
+  transceivers CAN.
 - **Borda de serviço (norte):** USB, SWD 2×5 1,27 mm, microSD, LED único,
   botões BOOT0/RESET — acessíveis com a caixa aberta sem desmontar chicote.
 - **Expansão (NE):** header 2×10 2,54 mm + área 65×45 mm com 4 furos M2.5
   para a placa-filha Linux (CM4: 55×40 mm, furos 58×33 — **PREMISSA** a
   validar quando a filha for definida).
-- **Furação:** 6× M4 não metalizados? Não — **6× M3 metalizados ao GND** nos
-  4 cantos + 2 no meio das bordas longas (PREMISSA: caixa a definir; espelha
-  o conceito de caixa selada da original).
+- **Furação:** 6× M3 metalizados ao GND — 2 cantos do topo + 2 no meio das
+  bordas curtas + 2 entre conectores na borda sul (posição exata no layout,
+  respeitando o keepout dos headers).
 
 ### Conector de expansão (board-to-board, 2×10, 2,54 mm, shrouded)
 
@@ -349,33 +366,34 @@ BOMs: `BOM-fase1.csv` e `BOM-completa.csv` nesta pasta.
 
 ---
 
-## G. DECISÕES-PENDENTES (responder antes do Prompt 3)
+## G. DECISÕES TOMADAS (registro — respostas do dono, v1.1)
 
-1. **Lowside:** manter VNLD5160TR-E (recomendado — em estoque, prova de
-   conceito do original, clamp interno) ou ir direto para Opção B discreta
-   (IRLR2905+TVS, mais barata e de supply perene, porém sem proteção de
-   curto e com dois circuitos de saída conforme a carga)?
-2. **Tracker:** TLE4251D (recomendado, mantém tracking, US$0,96) ou
-   TPS7B6950 (US$0,17, perde tracking ⇒ ~2–4% de erro ratiométrico)?
-3. **Placa:** 170×110 em L (recomendada) ou 180×120 com 4 conectores na
-   borda única (depende do drawing TE do header — confirmo no Prompt 3)?
-4. **LED único:** a decisão diz "warning/status" ⇒ PE6. Porém o LED
-   "running" (PE5) é o heartbeat que pisca sempre — mais útil para diagnose
-   de placa viva. Cravar PE6 (literal) ou PE5 (recomendado por utilidade)?
-5. **Keying do 4º conector:** confirmei key 1 (3-1437290-7), key 2
-   (3-1437290-8) e a existência de key 3; **key 4 não confirmado**. Se só
-   existirem 3 keys em 26 vias: aceitar 2 conectores com a mesma key em
-   posições fisicamente afastadas (C1 na borda curta) ou mudar algum para
-   outra família? Minha recomendação: C1=key1, C2=key2, C3=key3, C4=key1
-   (afastado e com cores de housing distintas).
-6. **Driver de ignição:** MIC4427 não existe na LCSC; usar TC4427ACOA713
-   (C144234, Microchip, pin-compatível, mesma família) como linha de BOM?
-7. **ETB no C2** (ajuste sobre sua proposta inicial) — validar.
-8. **Corrente do ETB:** 1 pino por fase do motor (ok p/ ~3 A contínuos,
-   pico 6 A é marginal). Aceitar, ou paralelar com as reservas 11/24 do C2?
-9. **CS do AUX_SPI = PG15** e reserva = PG0 (pinos livres do contrato) — validar.
-10. **12V_SW da expansão = 12v_PROT** (rail protegido da ECU, sem chave
-    dedicada) — validar, ou prever highside dedicado para a filha?
+1. **Lowside:** manter **VNLD5160TR-E** (LCSC C377942). BTF3050TE e
+   IRLR2905+TVS ficam só como plano B documentado (seção C.1).
+2. **Tracker 5V:** manter o **TLS115D0EJ original** (Mouser/DK; não há na
+   LCSC). Ressalva de montagem do exposed pad registrada na seção C.2.
+3. **Placa:** **180×120 mm, 4 conectores na borda longa única.**
+   Contingência registrada na seção E caso o drawing TE do header exceda
+   ~42 mm efetivos.
+4. **LED único:** populado em **PE5 (running/heartbeat)** — pisca sempre que
+   o firmware roda, diagnóstico sem ambiguidade ("o que funciona sem dúvida
+   de erro"). Footprints DNP em PE3/PE4/PE6.
+5. **Keying:** C1=key 1 (3-1437290-7), C2=key 2 (3-1437290-8), C3=key 3
+   (PN a fixar na compra), **C4=key 1 repetido**, nas extremidades opostas
+   da borda e com identificação de cor no housing.
+6. **Driver de ignição:** **TC4427ACOA713** (LCSC C144234) — pin-compatível
+   e funcionalmente equivalente ao MIC4427 (mesma família Microchip, dual
+   1,5 A, 4,5–18 V). MIC4427YM via Mouser fica como alternativa direta.
+7. **ETB no C2:** validado (melhor funcionalmente; compatibilidade com
+   firmware não é afetada — pinos do MCU idênticos ao contrato).
+8. **Posição dos pinos nos conectores:** sem relevância para o dono — o
+   layout pode reordenar livremente para otimizar chicote/placa (regras de
+   pares adjacentes e separação de retornos mantidas; YAMLs acompanham).
+   Vale também para a corrente do ETB: o layout pode paralelar as reservas
+   adjacentes (11/24 do C2) com as fases do ETB se o roteamento permitir.
+9. **AUX_SPI CS = PG15** e reserva = PG0 — mantidos (pinos livres do
+   contrato, sem objeção).
+10. **12V_SW da expansão = 12v_PROT** (rail protegido da ECU) — mantido.
 
 ---
 

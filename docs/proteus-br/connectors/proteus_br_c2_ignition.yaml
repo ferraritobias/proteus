@@ -1,5 +1,5 @@
 # Proteus-BR — Conector C2 "IGNIÇÃO / ETB"
-# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição B.
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Keying: 2 (housing 3-1437290-8).
 # AJUSTE sobre a proposta inicial: ETB1±/ETB2± movidos do C4 para cá —
 # são saídas de potência chaveada (até ~3 A contínuos / 6 A pico por ponte
 # TLE9201) e violariam a regra "nenhum sinal sensível adjacente a alta

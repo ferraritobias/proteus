@@ -1,5 +1,5 @@
 # Proteus-BR — Conector C3 "SENSORES"
-# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição C.
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Keying: 3 (PN do housing a fixar na compra).
 # Entradas AV: divisor 5,6k/10k + 100n (coeficiente 1,56 do firmware).
 # Entradas AT: pullup 2,7 kΩ para 5V (bias_resistor 2700 do firmware).
 # Knock: entrada AC para ADC3 PF4/PF5 (BOOT — hardcoded, imutável).
@@ -8,7 +8,7 @@
 
 pins:
   - pin: 1
-    function: 5V sensores, rail 1 (tracker TLE4251D n.1), 20 AWG
+    function: 5V sensores, rail 1 (tracker TLS115D0EJ n.1), 20 AWG
     type: 5v
     color: red
 

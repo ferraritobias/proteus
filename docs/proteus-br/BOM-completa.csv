@@ -6,12 +6,12 @@ MCU,Protecao USB,1,USBLC6-2SC6,SOT-23-6,C7519,,1,
 MCU,Conector USB-B,1,5787834-1,THT vertical,,Mouser/TE,1,
 MCU,Header SWD 2x5 1.27mm,1,FTSH-105-01-F-DV,SMD,,Mouser,1,
 MCU,Botoes BOOT0/RESET,2,EVQQ2,SMD,C318887,,1,
-MCU,LED status,1,LED 0603,0603,C72038,,1,pino conforme decisao 4
+MCU,LED status,1,LED 0603 verde,0603,C72043,,1,DECIDIDO: PE5 (running/heartbeat)
 MCU,microSD,1,693072010801,SMD,C164170,Wuerth,2,SPI3 PC10-PC12+PD2
 PSU,Buck 5V,1,LMR14020SDDAR,HSOP-8-EP,C187824,,1,
 PSU,LDO 3V3,1,AMS1117-3.3,SOT-223,C6186,,1,
-PSU,Tracker 5V n.1,1,TLE4251D,PG-TO252-5,C539669,Mouser,1,substitui TLS115
-PSU,Tracker 5V n.2,1,TLE4251D,PG-TO252-5,C539669,Mouser,2,
+PSU,Tracker 5V n.1,1,TLS115D0EJXUMA1,PG-DSO-8 EP,nao ha na LCSC,Mouser/DK 6559864,1,DECIDIDO manter original; plano B TLE4251D C539669
+PSU,Tracker 5V n.2,1,TLS115D0EJXUMA1,PG-DSO-8 EP,nao ha na LCSC,Mouser/DK,2,
 PSU,TVS entrada,1,SM15T33CA,SMC,C133707 (conferir),Mouser/Newark,1,
 PSU,Schottky SMA,6,SS34 classe,SMA,C8678,,1,
 PSU,Polyfuse 1206,2,polyfuse,1206,C207035,,1,
@@ -22,9 +22,9 @@ PSU,Eletrolitico 56u/50V,2,EEH-AZF1H560B,THT radial,,Mouser,1,
 CAN,Transceiver CAN1,1,TJA1051T/3,SOIC-8,C38695,,1,FIREWALL OpenBLT
 CAN,Transceiver CAN2,1,TJA1051T/3,SOIC-8,C38695,,2,
 CAN,TVS CAN,2,PESD1CAN-UX,SOT-323,C152727,,1 e 2,
-LOWSIDE,Driver dual LS1-16,8,VNLD5160TR-E,SOIC-8,C377942,ST eStore,1 (4x) e 2 (4x),ver decisao 1; alternativas BTF3050TE C534724 ou IRLR2905 C3010+SMCJ33CA
+LOWSIDE,Driver dual LS1-16,8,VNLD5160TR-E,SOIC-8,C377942,ST eStore,1 (4x) e 2 (4x),DECIDIDO manter VNLD5160; plano B: BTF3050TE C534724 ou IRLR2905 C3010+SMCJ33CA
 HIGHSIDE,Switch HS1-4,4,BTS4175SGA,SOIC-8,C152451 (esgotado),Mouser,2,
-IGN,Driver IGN1-12,6,TC4427ACOA713,SOIC-8,C144234,Mouser MIC4427YM,1 (2x) e 2 (4x),ver decisao 6
+IGN,Driver IGN1-12,6,TC4427ACOA713,SOIC-8,C144234,Mouser MIC4427YM,1 (2x) e 2 (4x),DECIDIDO usar TC4427A (MIC4427YM Mouser como alternativa)
 ETB,Ponte H ETB1/ETB2,2,TLE9201SG,PG-DSO-12,,Mouser/DK TLE9201SGAUMA1,2,IFX9201SG (C112633) como gemeo industrial
 TRIGGER,Buffer schmitt,3,SN74LVC2G17DBVR,SOT-23-6,C10429,,1 (1x) e 2 (2x),
 TRIGGER,Condicionador VR,2,MAX9924UAUB+T,uMAX-10,C5145181,DK,2,footprint desde v1
@@ -61,7 +61,7 @@ CONN,Header Superseal 26v,4,6437288-6 (keying a confirmar),THT,,Mouser/TE,1,C1-C
 CONN,Housing key1,1,3-1437290-7,,,Corsa/Mouser,1,C1
 CONN,Housing key2,1,3-1437290-8,,,KSV/Mouser,1,C2
 CONN,Housing key3,1,a confirmar,,,EMH,1,C3
-CONN,Housing C4,1,ver decisao 5,,,,1,
+CONN,Housing key1 repetido,1,3-1437290-7,,,Mouser/Corsa,1,C4 afastado do C1 + cor distinta
 CONN,Terminais 24-20AWG,~150,kit Superseal 1.0,,,Carrot Top,1,
 CONN,Terminais 18AWG,~40,3-1447221-3,,,TE/Mouser,1,
 CONN,Tampoes cavidade,~60,4-1437284-3,,,TE,1,
@@ -69,4 +69,4 @@ CONN,Header expansao 2x10,1,box header 2.54 generico,THT,a definir,,1,
 REMOVIDOS,Barometro,0,LPS25HB,,,,—,removido (decisao previa)
 REMOVIDOS,2o USB,0,—,,,,—,removido
 REMOVIDOS,RTC/bateria,0,BT1+D1503+R1513,,,,—,removido (EFI_RTC=FALSE no F4)
-REMOVIDOS,LEDs extras,0,4x LED 0603,,,,—,só 1 LED fica
+REMOVIDOS,LEDs extras,0,3x LED 0603,,,,—,footprints DNP ficam em PE3/PE4/PE6; populado so PE5

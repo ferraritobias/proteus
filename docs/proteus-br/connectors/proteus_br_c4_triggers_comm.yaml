@@ -1,5 +1,5 @@
 # Proteus-BR — Conector C4 "TRIGGERS / COMUNICAÇÃO"
-# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição D.
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Keying: 1 repetido (housing 3-1437290-7; afastado do C1, cor distinta).
 # Só sinais de baixa corrente: hall/digitais (buffer schmitt SN74LVC2G17),
 # VR diferencial (MAX9924 — footprint não populado na Fase 1), CAN1/CAN2.
 # Pares VR e CAN em pinos adjacentes (par trançado no chicote).

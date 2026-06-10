@@ -6,10 +6,10 @@ MCU,Protecao USB,1,USBLC6-2SC6,SOT-23-6,C7519,,FIREWALL
 MCU,Conector USB-B,1,5787834-1,THT vertical,,Mouser/TE,unico USB da placa
 MCU,Header SWD,1,FTSH-105-01-F-DV (2x5 1.27mm),SMD,,Mouser/Samtec,ou generico 1.27mm
 MCU,Botao BOOT0/RESET,2,SW_SPST EVQQ2,SMD,C318887,,igual v0.7
-MCU,LED status unico,1,LED 0603,0603,C72038 (laranja),,pino: ver decisao pendente 4 (PE6 ou PE5)
+MCU,LED status unico,1,LED 0603 verde,0603,C72043,,DECIDIDO: PE5 (running/heartbeat); footprints DNP em PE3/PE4/PE6
 PSU,Buck 5V,1,LMR14020SDDAR,HSOP-8-EP,C187824,,unico exposed-pad alem do LQFP — aceito (decisao 4 do prompt: minimo de ar quente)
 PSU,LDO 3V3,1,AMS1117-3.3,SOT-223,C6186,,
-PSU,Tracker 5V sensores n.1,1,TLE4251D,PG-TO252-5,C539669,Mouser,substitui TLS115D0E; mantem tracking
+PSU,Tracker 5V sensores n.1,1,TLS115D0EJXUMA1,PG-DSO-8 EP,nao ha na LCSC,Mouser/DK 6559864,DECIDIDO manter original; EP soldado por furo/via por baixo; plano B TLE4251D C539669
 PSU,TVS entrada,1,SM15T33CA,SMC,C133707 (conferir),Mouser/Newark,estoque LCSC ambiguo
 PSU,Schottky entrada/buck,4,SS34/D_Schottky SMA,SMA,C8678,,D101-D104/D901/D903 da v0.7
 PSU,Polyfuse,2,1206 polyfuse,1206,C207035,,F101/F102
@@ -19,8 +19,8 @@ PSU,Ferrite bead,1,FB 0805,0805,C1015,,
 PSU,Eletrolitico 56uF 50V,2,EEH-AZF1H560B,radial THT 8mm,,Mouser/DK,bulk entrada
 CAN,Transceiver CAN1,1,TJA1051T/3,SOIC-8,C38695,,FIREWALL OpenBLT via CAN1
 CAN,TVS CAN,1,PESD1CAN-UX,SOT-323,C152727,,no CAN1 (o do CAN2 fica DNP)
-LOWSIDE,Driver lowside LS1-8,4,VNLD5160TR-E,SOIC-8,C377942,ST eStore/Mouser,dual: 4 chips = 8 canais; ver decisao pendente 1
-IGN,Driver ignicao IGN1-4,2,TC4427ACOA713,SOIC-8,C144234,Mouser (MIC4427YM),pin-compativel MIC4427; ver decisao pendente 6
+LOWSIDE,Driver lowside LS1-8,4,VNLD5160TR-E,SOIC-8,C377942,ST eStore/Mouser,dual: 4 chips = 8 canais; DECIDIDO manter VNLD5160
+IGN,Driver ignicao IGN1-4,2,TC4427ACOA713,SOIC-8,C144234,Mouser (MIC4427YM),pin-compativel MIC4427; DECIDIDO usar TC4427A
 TRIGGER,Buffer schmitt HALL1-2,1,SN74LVC2G17DBVR,SOT-23-6,C10429,,
 ANALOG,Opamp buffer AV/knock,3,MCP6004 SOIC-14,SOIC-14,C7378,,U701/U801 (AV1-8) + U5 (knock)
 ANALOG,Opamp knock,1,MCP6002-xSN,SOIC-8,C7377,,U7
@@ -51,11 +51,11 @@ C,1u trackers,2,1u X7R 25V,0603,C15849,,FUNCIONAL estabilidade LDO
 C,2.2u VCAP,2,2.2u X7R,0603,C23630,,FUNCIONAL exigencia ST
 C,4.7u bulk local,~8,4.7u X7R 16V+,0603,C19666,,
 C,10u saida buck/bulk,~4,10u X7R 25V,1206,C13585,,FUNCIONAL ripple
-CONN,Header Superseal 26v vertical,4,6437288-6 (conferir keying),THT,,Mouser/TE/Newark,C1-C4; matriz de keying na decisao pendente 5
+CONN,Header Superseal 26v vertical,4,6437288-6 (conferir keying),THT,,Mouser/TE/Newark,C1-C4; keying decidido: 1/2/3/1
 CONN,Housing plug key1,1,3-1437290-7,,,Mouser/Corsa,C1
 CONN,Housing plug key2,1,3-1437290-8,,,Mouser/KSV,C2
 CONN,Housing plug key3,1,a confirmar (26v key 3),,,EMH/TE,C3
-CONN,Housing 4o conector,1,ver decisao pendente 5,,,,C4
+CONN,Housing plug key1 (repetido),1,3-1437290-7,,,Mouser/Corsa,C4 — afastado do C1 e com cor distinta
 CONN,Terminal 0.35-0.5mm2,~80,kit 24-20AWG Superseal 1.0,,,Carrot Top/Corsa,sinais
 CONN,Terminal 0.75-0.85mm2,~30,3-1447221-3,,,TE/Mouser,potencia 18AWG
 CONN,Tampao cavidade,~40,4-1437284-3,,,TE,reservas e DNP

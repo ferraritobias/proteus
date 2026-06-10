@@ -1,5 +1,5 @@
 # Proteus-BR — Conector C1 "POTÊNCIA/INJEÇÃO"
-# TE Superseal 1.0, 26 vias (2 fileiras x 13). Chaveamento/keying: posição A.
+# TE Superseal 1.0, 26 vias (2 fileiras x 13). Keying: 1 (housing 3-1437290-7).
 # Formato compatível com firmware/config/boards/proteus/connectors/*.yaml da rusEFI.
 # Mapeamento MCU<->função idêntico ao PINOUT-CONTRACT (docs/proteus-br/PINOUT-CONTRACT.csv).
 # Fase 1 popula: 12V_RAW, GND, LS1-8. LS9-16 e HS1-4 = footprints não populados.
