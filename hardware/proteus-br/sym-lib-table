@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name "proteus-br")(type "KiCad")(uri "${KIPRJMOD}/lib/proteus-br.kicad_sym")(options "")(descr "Proteus-BR local symbols"))
+)

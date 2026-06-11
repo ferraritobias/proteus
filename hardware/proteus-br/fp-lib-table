@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name "proteus-br")(type "KiCad")(uri "${KIPRJMOD}/lib/proteus-br.pretty")(options "")(descr "Proteus-BR local footprints"))
+  (lib (name "sunlord-MWSA0503")(type "KiCad")(uri "${KIPRJMOD}/lib/sunlord-MWSA0503.pretty")(options "")(descr "Sunlord MWSA0503 (buck inductor)"))
+)
