@@ -4,10 +4,10 @@
   (uuid 7cbfce33-23b1-4da0-a6af-0cf31e154c00)
   (paper "A4")
   (title_block
-    (title "rusEfi Proteus")
-    (date "2022-04-09")
-    (rev "v0.7")
-    (company "rusEFI")
+    (title "Proteus-BR — psu")
+    (date "2026-06-11")
+    (rev "v1")
+    (company "baseado em rusEFI Proteus v0.7")
     (comment 1 "github.com/mck1117/proteus")
     (comment 2 "rusefi.com/s/proteus")
   )
@@ -612,7 +612,7 @@
       (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "ki_keywords" "global power" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-      (property "ki_description" "Power symbol creates a global label with name \\\"+5V\\\""
+      (property "ki_description" "Power symbol creates a global label with name \\\\\\\"+5V\\\\\\\""
         (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
@@ -641,7 +641,7 @@
       (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "ki_keywords" "global power" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-      (property "ki_description" "Power symbol creates a global label with name \\\"GND\\\" , ground"
+      (property "ki_description" "Power symbol creates a global label with name \\\\\\\"GND\\\\\\\" , ground"
         (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
@@ -2196,9 +2196,11 @@
     (property "Footprint" "Diode_SMD:D_SMC" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "Datasheet" "~" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "PN" "SM15T33CA" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "C151281" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
+    (property "LCSC" "C133707" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "LCSC_ext" "1" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "possible_not_ext" "1" (at 31.75 34.29 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "STMicroelectronics" (at 33.7566 33.1216 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "SM15T33CA" (at 33.7566 33.1216 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid ae56ed63-9b59-4298-a608-6ace3667743b))
     (pin "2" (uuid 97e13396-df92-4acc-b0f7-ec153f3b7f9a))
     (instances
@@ -2386,13 +2388,15 @@
     )
     (property "Datasheet" "~" (at 44.45 78.105 0) (effects (font (size 1.27 1.27)) hide))
     (property "PN" "TLS115D0E" (at 44.45 78.105 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "N/A" (at 44.45 78.105 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid d13547c7-0b0a-4be4-bf2f-33f366a887c4))
-    (pin "2" (uuid aafe3889-f965-440a-b1d6-f3d56f0d20d7))
-    (pin "3" (uuid c799366f-9f2e-496a-9367-a233d5962b1e))
-    (pin "4" (uuid 2a468da7-7d31-4807-8a97-5050b216fd5d))
-    (pin "5" (uuid 9db06d6c-7870-4461-8557-5527efa02c4c))
-    (pin "6" (uuid 37712b1f-55ed-48bd-b749-8266b9f08963))
+    (property "LCSC" "C539669" (at 44.45 78.105 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "Infineon" (at 45.085 69.85 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "TLE4251D" (at 45.085 69.85 0) (effects (font (size 1.27 1.27)) hide))
+    (pin "1" (uuid 3e40ca4e-2e79-4ea6-aba5-a057b4441389))
+    (pin "2" (uuid ea8495ce-8da8-460d-bcb0-e5437221b3ba))
+    (pin "3" (uuid f784b781-a468-43fe-bbeb-3be56990bb05))
+    (pin "4" (uuid 1cf8f0c2-2159-467e-9cae-65ff42fac19e))
+    (pin "5" (uuid 6de809e5-fb6d-49cf-9e95-11b6b2097d99))
+    (pin "6" (uuid 88a63efe-8dde-45cf-b8f4-46bc2074b541))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005da72eff"
@@ -2584,7 +2588,7 @@
     (uuid 00000000-0000-0000-0000-00005db99a44)
     (property "Reference" "R1006" (at 54.61 94.4372 90) (effects (font (size 1.27 1.27))))
     (property "Value" "10k" (at 54.61 96.7486 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 54.61 97.917 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2819,14 +2823,16 @@
     )
     (property "Datasheet" "~" (at 117.475 78.105 0) (effects (font (size 1.27 1.27)) hide))
     (property "PN" "TLS115D0E" (at 117.475 78.105 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "N/A" (at 117.475 78.105 0) (effects (font (size 1.27 1.27)) hide))
+    (property "LCSC" "C539669" (at 117.475 78.105 0) (effects (font (size 1.27 1.27)) hide))
     (property "DNP" "DNP fase 1" (at 118.11 69.85 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 2442be90-d798-400d-9ac9-0fc13f6f4fe3))
-    (pin "2" (uuid 38efeba5-ca5b-4eb5-a69d-5e46068a5cd8))
-    (pin "3" (uuid 5a1b528e-8777-4a50-932e-196b072cfe5b))
-    (pin "4" (uuid 026e5621-0818-4da1-935f-59a0e59b1e2b))
-    (pin "5" (uuid 565421a8-9b68-4405-ad2f-dae9eb01eae5))
-    (pin "6" (uuid a3e0b5a5-d34a-474b-bf1d-a34d3d79fb02))
+    (property "MFN" "Infineon" (at 118.11 69.85 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "TLE4251D" (at 118.11 69.85 0) (effects (font (size 1.27 1.27)) hide))
+    (pin "1" (uuid 1a6b1fcc-dd74-44a1-ba8f-302caaf8a3dc))
+    (pin "2" (uuid cbc5712d-7b7a-4846-850d-5bafce29a05c))
+    (pin "3" (uuid 7ca4a16e-ba72-462e-8802-c0d768eaf1a4))
+    (pin "4" (uuid e8e33f18-9af6-480d-8e37-852308c12518))
+    (pin "5" (uuid acdb2fa2-9f2e-4b5d-91f9-acd932a20ea2))
+    (pin "6" (uuid 620e5f8a-fb1a-41ba-99a1-88ce63cef1ea))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005da72eff"
@@ -2869,7 +2875,7 @@
     (uuid 00000000-0000-0000-0000-00005dbe5600)
     (property "Reference" "R1007" (at 127.635 94.4372 90) (effects (font (size 1.27 1.27))))
     (property "Value" "10k" (at 127.635 96.7486 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 127.635 97.917 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -2968,6 +2974,8 @@
     (property "PN" "PESD1CAN-UX" (at 227.33 81.915 0) (effects (font (size 1.27 1.27)) hide))
     (property "LCSC" "C152727" (at 227.33 81.915 0) (effects (font (size 1.27 1.27)) hide))
     (property "LCSC_ext" "1" (at 227.33 81.915 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "Nexperia" (at 225.3488 83.0834 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "PESD1CAN,215" (at 225.3488 83.0834 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 816483ea-c7db-4bd4-9837-c8c77dac67f2))
     (pin "2" (uuid 83b02d92-808b-4322-9bee-6bf9ac5bbcd2))
     (pin "3" (uuid f1c18439-be48-4e61-8683-600380581a41))
@@ -3080,7 +3088,7 @@
     (uuid 00000000-0000-0000-0000-00005e725aea)
     (property "Reference" "R906" (at 89.408 33.7566 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1" (at 89.408 36.068 0) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 85.852 34.925 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3117,6 +3125,8 @@
     (property "LCSC_ext" "1" (at 137.16 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "PN" "LMR14020" (at 137.16 34.29 0) (effects (font (size 1.27 1.27)) hide))
     (property "possible_not_ext" "0" (at 137.16 34.29 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "Texas Instruments" (at 139.7 23.495 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "LMR14020SDDAR" (at 139.7 23.495 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid e8883e64-356f-4c06-805e-c23b6d9b2ded))
     (pin "2" (uuid a4f2d62e-c528-429e-919e-af16096e1a95))
     (pin "3" (uuid f32d82f1-1229-4b4f-834f-8cfabf9425e7))
@@ -3173,7 +3183,7 @@
     (uuid 00000000-0000-0000-0000-00005e98b781)
     (property "Reference" "R908" (at 158.75 39.37 90) (effects (font (size 1.27 1.27))))
     (property "Value" "68k" (at 158.75 41.91 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 158.75 43.688 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3200,7 +3210,7 @@
     (uuid 00000000-0000-0000-0000-00005e98c8e8)
     (property "Reference" "R907" (at 149.86 51.435 90) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "12k" (at 152.4 50.8 90) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 150.622 48.895 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3271,7 +3281,7 @@
     (uuid 00000000-0000-0000-0000-00005e9972d1)
     (property "Reference" "C905" (at 162.56 43.815 90) (effects (font (size 1.27 1.27))))
     (property "Value" "330p" (at 162.56 50.165 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
       (at 158.75 47.9552 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3302,7 +3312,7 @@
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 119.888 44.323 0) (effects (font (size 1.27 1.27)) (justify left)))
-    (property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+    (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
       (at 116.332 43.18 90)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3469,6 +3479,8 @@
     )
     (property "LCSC" "C38695" (at 190.5 81.915 0) (effects (font (size 1.27 1.27)) hide))
     (property "LCSC_ext" "0" (at 190.5 81.915 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "NXP" (at 181.61 90.805 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "TJA1051T/3" (at 181.61 90.805 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 84c5fb61-db22-40e8-98ce-48760ab763bc))
     (pin "2" (uuid 3b5b9f96-240f-4960-9726-2eb57e574e27))
     (pin "3" (uuid 2a377789-f542-4da4-80c4-4e30fd4269b4))
@@ -3696,6 +3708,8 @@
     )
     (property "LCSC" "C6186" (at 222.25 29.21 0) (effects (font (size 1.27 1.27)) hide))
     (property "LCSC_ext" "0" (at 222.25 29.21 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "AMS" (at 222.25 23.0632 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "AMS1117-3.3" (at 222.25 23.0632 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 78ad7334-864c-426b-a6d5-7f1985937251))
     (pin "2" (uuid 4bbb3685-056a-4e54-aff6-1e3560d0eaa9))
     (pin "3" (uuid e71ace10-61f2-4a31-b4c3-49c1376fd704))
@@ -3769,6 +3783,8 @@
       (at 225.3488 126.2634 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "MFN" "Nexperia" (at 225.3488 126.2634 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "PESD1CAN,215" (at 225.3488 126.2634 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid afe5b72b-7282-472e-b171-7073a8727b61))
     (pin "2" (uuid e9928b9f-cf47-42cc-8b00-65a1be5b44d0))
     (pin "3" (uuid c5bf3234-2bae-4f4a-bf46-2a30198fc48f))
@@ -3829,6 +3845,8 @@
       (at 181.61 133.985 0)
       (effects (font (size 1.27 1.27)) hide)
     )
+    (property "MFN" "NXP" (at 181.61 133.985 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "TJA1051T/3" (at 181.61 133.985 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 4dbd1822-05ca-48eb-a11c-fcf2d068a67b))
     (pin "2" (uuid 8f6bd73d-a815-4a6b-9094-782ff1f7911d))
     (pin "3" (uuid f604bd4c-824a-4d23-ae5c-72bc002f6f4c))
@@ -3938,16 +3956,16 @@
   (text "Proteus-BR: TLE4251D substitui TLS115D0E (LCSC C539669). PREMISSA a verificar no datasheet Infineon antes do layout: pinos 1=I 2=EN 3=GND 4=ADJ 5=Q tab=GND. EN amarrado em I (sempre ligado). ADJ segue o 5V do buck (tracking ratiometrico). Cout 1u X7R: janela de ESR do datasheet."
     (at 20.32 110.49 0)
     (effects (font (size 1.5 1.5)) (justify left bottom))
-    (uuid 7c38b775-75d6-4d01-a6f5-47c445a494b7)
+    (uuid 1eb69a3b-3e6c-4fe0-b5bc-f0a0375b9085)
   )
   (text "TLE4251D nao tem saida PG: redes 5V_SENSOR_x_PG mantidas ate PC14/PC15 com pullups 10k DNP (R1006/R1007) para diagnostico futuro por resistor."
     (at 20.32 115.57 0)
     (effects (font (size 1.5 1.5)) (justify left bottom))
-    (uuid 8c2b2f8f-509b-4caa-bb34-b2d42de01e5a)
+    (uuid d4ccd704-0983-430c-ab46-9e6656331a29)
   )
   (text "Proteus-BR: D903 removido — entrada unica de 12V; 12v_PROT vem somente dos polyfuses F101/F102 (folha raiz). Um schottky em paralelo anularia a protecao."
     (at 20.32 120.65 0)
     (effects (font (size 1.5 1.5)) (justify left bottom))
-    (uuid 8c855a82-0649-4415-af08-7d1a70bae987)
+    (uuid d969c293-edce-4534-8382-e3d1ae2c81e4)
   )
 )

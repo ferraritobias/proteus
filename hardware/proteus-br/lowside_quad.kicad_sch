@@ -4,10 +4,10 @@
   (uuid eafd8238-2cf6-4e94-b049-b63b36076b3d)
   (paper "A4")
   (title_block
-    (title "rusEfi Proteus")
-    (date "2022-04-09")
-    (rev "v0.7")
-    (company "rusEFI")
+    (title "Proteus-BR — lowside_quad")
+    (date "2026-06-11")
+    (rev "v1")
+    (company "baseado em rusEFI Proteus v0.7")
     (comment 1 "github.com/mck1117/proteus")
     (comment 2 "rusefi.com/s/proteus")
   )
@@ -153,7 +153,7 @@
       (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
       (property "ki_keywords" "global power" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
-      (property "ki_description" "Power symbol creates a global label with name \\\"GND\\\" , ground"
+      (property "ki_description" "Power symbol creates a global label with name \\\\\\\"GND\\\\\\\" , ground"
         (at 0 0 0)
         (effects (font (size 1.27 1.27)) hide)
       )
@@ -575,7 +575,9 @@
     )
     (property "Datasheet" "~" (at 108.585 57.785 0) (effects (font (size 1.524 1.524)) hide))
     (property "PN" "VNLD5160TR-E" (at 106.045 51.435 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "N/A" (at 106.045 51.435 0) (effects (font (size 1.27 1.27)) hide))
+    (property "LCSC" "C377942" (at 106.045 51.435 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "STMicroelectronics" (at 106.045 35.0012 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "VNLD5160TR-E" (at 106.045 35.0012 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 6d4e8c89-aa04-4a14-9525-5991142546de))
     (pin "2" (uuid c17f1ed2-4f7b-452d-a9e3-83d2cc0c16bc))
     (pin "3" (uuid a6eb6df4-5ffe-4648-a18a-93a203eb129c))
@@ -621,7 +623,9 @@
     )
     (property "Datasheet" "~" (at 108.585 99.695 0) (effects (font (size 1.524 1.524)) hide))
     (property "PN" "VNLD5160TR-E" (at 106.045 93.345 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "N/A" (at 106.045 93.345 0) (effects (font (size 1.27 1.27)) hide))
+    (property "LCSC" "C377942" (at 106.045 93.345 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MFN" "STMicroelectronics" (at 106.045 76.9112 0) (effects (font (size 1.27 1.27)) hide))
+    (property "MPN" "VNLD5160TR-E" (at 106.045 76.9112 0) (effects (font (size 1.27 1.27)) hide))
     (pin "1" (uuid 97bd527f-d7d6-4b88-8d9b-cc24907032e9))
     (pin "2" (uuid 9143d25f-25b9-4137-bb5d-6b6c439db62b))
     (pin "3" (uuid 21677643-a6ed-431b-817f-b28650c1c03a))
@@ -646,101 +650,6 @@
         )
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f37f"
           (reference "U402")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "Device:R_Pack04")
-    (at 78.105 71.12 270)
-    (mirror x)
-    (unit 1)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid 00000000-0000-0000-0000-00005d995eee)
-    (property "Reference" "RN301" (at 78.105 81.7118 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "1k" (at 78.105 79.4004 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
-      (at 78.105 64.135 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 78.105 71.12 0) (effects (font (size 1.27 1.27)) hide))
-    (property "PN" "" (at 78.105 71.12 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "C20197" (at 78.105 71.12 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC_ext" "0" (at 78.105 71.12 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 37895dfb-db11-45d3-abea-a0096ea1c76e))
-    (pin "2" (uuid 519947af-fba9-400f-b4ac-f06b93f21811))
-    (pin "3" (uuid 93910f57-8fce-4fc5-9f74-7769b7a4a599))
-    (pin "4" (uuid e0bce760-4589-4bc1-ad37-a17adfe1e04f))
-    (pin "5" (uuid 94b370ad-d3d0-4dbf-a6e0-ddb62a10a0f5))
-    (pin "6" (uuid d9103bc4-5fb1-4257-8c3b-549bde9c46c3))
-    (pin "7" (uuid bf31db65-fd30-401a-bcab-4e063b31e62f))
-    (pin "8" (uuid d5d8c0ed-4ee9-4b59-bd6a-2be8ffd700f0))
-    (instances
-      (project "proteus-br"
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f107"
-          (reference "RN301")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f54c"
-          (reference "RN501")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
-          (reference "RN201")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f37f"
-          (reference "RN401")
-          (unit 1)
-        )
-      )
-    )
-  )
-  (symbol
-    (lib_id "Device:R_Pack04")
-    (at 67.945 83.82 0)
-    (unit 1)
-    (in_bom yes)
-    (on_board yes)
-    (dnp no)
-    (uuid 00000000-0000-0000-0000-00005d997812)
-    (property "Reference" "RN302" (at 57.3532 83.82 90) (effects (font (size 1.27 1.27))))
-    (property "Value" "1k" (at 59.6646 83.82 90) (effects (font (size 1.27 1.27))))
-    (property "Footprint" "Resistor_SMD:R_Array_Convex_4x0603"
-      (at 74.93 83.82 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 67.945 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (property "PN" "" (at 67.945 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC" "C20197" (at 67.945 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (property "LCSC_ext" "0" (at 67.945 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 53aab7b9-ad9c-4392-89ca-65bc7e8cbd22))
-    (pin "2" (uuid 2d9cd065-71b6-4a88-9704-5da1dc0cafdc))
-    (pin "3" (uuid ba4c4389-9a3d-44b2-8312-98eee0e5ca2e))
-    (pin "4" (uuid 3d548496-5a90-4771-9277-6b339b59925c))
-    (pin "5" (uuid d937dd49-c6e6-44f0-bb26-4b57359bc796))
-    (pin "6" (uuid acf1984c-bb0d-4209-9f06-da53ecb9c441))
-    (pin "7" (uuid aa2cc547-76e8-4b50-af71-8ee6d0b39489))
-    (pin "8" (uuid dde6b189-9213-47fb-a64b-67f2fc9ee9af))
-    (instances
-      (project "proteus-br"
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f107"
-          (reference "RN302")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f54c"
-          (reference "RN502")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
-          (reference "RN202")
-          (unit 1)
-        )
-        (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d99f37f"
-          (reference "RN402")
           (unit 1)
         )
       )
@@ -958,7 +867,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid e899ccac-1fe7-4605-aceb-f7fcb7e594c1)
+    (uuid 8826e102-768f-4ef7-8286-9ad38a404810)
     (property "Reference" "R211" (at 80.105 66.78 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 80.105 68.78 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -966,8 +875,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 78.105 68.58 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 9633039e-f1e1-4e5d-941d-393cd0b4fe93))
-    (pin "2" (uuid 6b93eba9-f8ae-42d9-be20-036cc74be601))
+    (pin "1" (uuid e89315d6-3fe8-4284-a64f-9f5d6c96dea4))
+    (pin "2" (uuid 93274c81-e098-44c9-b06c-f90029a02ae0))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -992,12 +901,12 @@
   (wire
     (pts (xy 73.025 68.58) (xy 74.295 68.58))
     (stroke (width 0) (type default))
-    (uuid 00941967-497b-46a4-9132-033e8905fa19)
+    (uuid c8835642-0ca1-4384-830d-3a572a0b0f2b)
   )
   (wire
     (pts (xy 81.915 68.58) (xy 83.185 68.58))
     (stroke (width 0) (type default))
-    (uuid 13ebdccf-be4e-49f1-8dbf-d7e7a9e1b380)
+    (uuid e756610a-5bf2-4440-957d-1c20986697d7)
   )
   (symbol
     (lib_id "Device:R")
@@ -1007,7 +916,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid f712e36f-54e0-40c8-8024-17f011d18c32)
+    (uuid 9b3a69b4-f5ec-4b94-b9cd-ca3caf765085)
     (property "Reference" "R212"
       (at 80.105 69.32000000000001 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -1021,8 +930,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 78.105 71.12 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid f9e8a055-c19d-4071-8573-6418f78edcf8))
-    (pin "2" (uuid f3767dbb-616a-4823-b541-566bd446b788))
+    (pin "1" (uuid 377d6368-cef4-4104-8a23-435f261d1388))
+    (pin "2" (uuid 932ef7b1-e01e-4b79-9d2d-0c4503793e07))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1047,12 +956,12 @@
   (wire
     (pts (xy 73.025 71.12) (xy 74.295 71.12))
     (stroke (width 0) (type default))
-    (uuid 00812929-2236-407f-8512-11af48f59f3e)
+    (uuid d8182ebf-3697-4f2f-814c-137844f03ac0)
   )
   (wire
     (pts (xy 81.915 71.12) (xy 83.185 71.12))
     (stroke (width 0) (type default))
-    (uuid b0665d16-4a3a-41be-ae25-4573b55b1647)
+    (uuid b83773cc-c3be-4895-94d9-25ae55cd6d16)
   )
   (symbol
     (lib_id "Device:R")
@@ -1062,7 +971,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid 2eed689a-b7f6-45d9-a337-e746cd80ae5e)
+    (uuid 0828f6aa-e212-44bb-bb81-14304056e96b)
     (property "Reference" "R213" (at 80.105 71.86 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 80.105 73.86 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -1070,8 +979,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 78.105 73.66 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 5b4340d5-444c-41ef-a21e-7d94d6f227bc))
-    (pin "2" (uuid aad962a8-8b4a-47e0-9f09-20dd3be0d60b))
+    (pin "1" (uuid c71f2a7b-b3bb-4a73-9dce-c91b7ff56012))
+    (pin "2" (uuid 84812eb7-96da-429b-abbe-3c4cbce21aab))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1096,12 +1005,12 @@
   (wire
     (pts (xy 73.025 73.66) (xy 74.295 73.66))
     (stroke (width 0) (type default))
-    (uuid 2f7dcb37-8864-4bf4-b16f-49f2b331a499)
+    (uuid f64b02a9-b884-441a-804c-101d6820f13b)
   )
   (wire
     (pts (xy 81.915 73.66) (xy 83.185 73.66))
     (stroke (width 0) (type default))
-    (uuid 444a2e48-955e-44e5-a86e-7aa165979cdb)
+    (uuid 663b398a-6bdd-4f1b-9802-e8d06ca56401)
   )
   (symbol
     (lib_id "Device:R")
@@ -1111,7 +1020,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid 54637890-0b29-4c4c-993d-fd7996fe1392)
+    (uuid 787e3982-3fa3-4f65-be53-78aa3c42bfce)
     (property "Reference" "R214" (at 80.105 74.4 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 80.105 76.4 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -1119,8 +1028,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 78.105 76.2 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid bd738eac-d2a1-4339-9506-2a1c90d37c49))
-    (pin "2" (uuid d9ee9191-9774-441a-96b5-f5d41c72bd18))
+    (pin "1" (uuid e2891d77-5b5e-462a-a35e-3145545e0367))
+    (pin "2" (uuid af8eb68a-4386-48ef-bad3-9760956bba6c))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1145,12 +1054,12 @@
   (wire
     (pts (xy 73.025 76.2) (xy 74.295 76.2))
     (stroke (width 0) (type default))
-    (uuid 58cf98da-218c-4b2d-9e6c-033998271910)
+    (uuid 8efe062c-9d3c-4f27-9b9f-8d5f751864c2)
   )
   (wire
     (pts (xy 81.915 76.2) (xy 83.185 76.2))
     (stroke (width 0) (type default))
-    (uuid ede79069-2557-4283-8488-c3fe747f39d0)
+    (uuid 0df68337-3e5e-421a-84dc-6ecf431d9b42)
   )
   (symbol
     (lib_id "Device:R")
@@ -1160,7 +1069,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid 51939f91-106d-43fb-bb7a-e438816bbf90)
+    (uuid d2297c23-897a-4b3b-a7b2-b270cb976c3b)
     (property "Reference" "R221"
       (at 64.86500000000001 82.02 0)
       (effects (font (size 1.27 1.27)) (justify left))
@@ -1174,8 +1083,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 62.865 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 4e9ab271-b02b-4a33-8cb2-cddc959506bb))
-    (pin "2" (uuid 2aa1ed7b-beda-4bf8-9f97-acd284cef31e))
+    (pin "1" (uuid 60944203-1241-4e8e-b088-851e80135cff))
+    (pin "2" (uuid a4e5090e-215a-4ab0-b229-e425add72dcf))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1200,12 +1109,12 @@
   (wire
     (pts (xy 62.865 78.74) (xy 62.865 80.01))
     (stroke (width 0) (type default))
-    (uuid d87c3ce0-33f8-4375-bd9f-1c4836f57dfa)
+    (uuid 659baacf-1fa2-449b-a409-31fe2e73a7b8)
   )
   (wire
     (pts (xy 62.865 87.63) (xy 62.865 88.9))
     (stroke (width 0) (type default))
-    (uuid 9a1cf7d5-a498-4f1a-9667-3497d659e1d3)
+    (uuid c5fee91c-7cc1-4243-8f39-ce44236515cb)
   )
   (symbol
     (lib_id "Device:R")
@@ -1215,7 +1124,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid a51f2bdb-c707-4bce-b397-fc98fad78457)
+    (uuid a10aa0b3-1e8a-4196-b5b1-327b31119373)
     (property "Reference" "R222" (at 67.405 82.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 67.405 84.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -1223,8 +1132,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 65.405 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid ddc9b524-b4d3-495a-b5f8-70ec534503ae))
-    (pin "2" (uuid c2f0a8f2-7f7b-4839-b587-6f6d8d6d7156))
+    (pin "1" (uuid 5c1d96fe-3adb-4d48-9903-9ec0474094a8))
+    (pin "2" (uuid 216d81ea-769c-42b7-b661-4e6f01083fd3))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1249,12 +1158,12 @@
   (wire
     (pts (xy 65.405 78.74) (xy 65.405 80.01))
     (stroke (width 0) (type default))
-    (uuid 6a620eaf-ef8e-4f6f-85f1-7c57311af490)
+    (uuid 4a3552e2-8eb2-424a-9890-9997e07f664b)
   )
   (wire
     (pts (xy 65.405 87.63) (xy 65.405 88.9))
     (stroke (width 0) (type default))
-    (uuid 07131c4b-8fcb-44da-b84c-8b8961fc0377)
+    (uuid db4a461c-d7c7-4bb6-a5b1-d14385261706)
   )
   (symbol
     (lib_id "Device:R")
@@ -1264,7 +1173,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid 2f52b3e7-06b1-4477-998b-b4a8ba0c72e1)
+    (uuid fe73fbfc-7b1b-4b70-a5cc-4061ad4c222a)
     (property "Reference" "R223" (at 69.945 82.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 69.945 84.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -1272,8 +1181,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 67.945 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid cb77e1e1-3551-46fc-a4c9-df9b5ac9efb0))
-    (pin "2" (uuid 9d132698-269d-4b56-a1bf-788d3ff2d285))
+    (pin "1" (uuid f1e04e31-1625-4c6c-94d5-9beda608c4a8))
+    (pin "2" (uuid 0f0eead4-7619-4487-9e34-accc65adf901))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1298,12 +1207,12 @@
   (wire
     (pts (xy 67.945 78.74) (xy 67.945 80.01))
     (stroke (width 0) (type default))
-    (uuid d444ea29-eab2-4c93-8291-243bcc097c73)
+    (uuid b1590491-e9cf-43c1-86c6-dc2b109cc247)
   )
   (wire
     (pts (xy 67.945 87.63) (xy 67.945 88.9))
     (stroke (width 0) (type default))
-    (uuid 1a7b1ca9-ddff-4455-bb4d-14da708218ec)
+    (uuid ec32762c-bbae-4bc5-a961-d02e35f2d587)
   )
   (symbol
     (lib_id "Device:R")
@@ -1313,7 +1222,7 @@
     (on_board yes)
     (dnp no)
     (fields_autoplaced)
-    (uuid 0a457128-4b18-4734-bd95-88a538cd4985)
+    (uuid efa48650-4e42-4445-97f0-c0fb57f2c1b4)
     (property "Reference" "R224" (at 72.485 82.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Value" "1k" (at 72.485 84.02 0) (effects (font (size 1.27 1.27)) (justify left)))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric"
@@ -1321,8 +1230,8 @@
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 70.485 83.82 0) (effects (font (size 1.27 1.27)) hide))
-    (pin "1" (uuid 8b25b31d-4b80-4647-8fa5-9cdb65285c70))
-    (pin "2" (uuid f58d88a3-72ff-4fab-a5f7-cfe90ec89f78))
+    (pin "1" (uuid 199d219b-3f1c-4c98-9617-99b3eb824a09))
+    (pin "2" (uuid ea15cc63-3be1-4bd4-ba37-8e2e0229bfca))
     (instances
       (project "proteus-br"
         (path "/da96cc1d-20c0-47ba-9881-2a73783a20fb/00000000-0000-0000-0000-00005d98a146"
@@ -1347,16 +1256,16 @@
   (wire
     (pts (xy 70.485 78.74) (xy 70.485 80.01))
     (stroke (width 0) (type default))
-    (uuid e03abf25-5d52-4794-8aae-0afabdffbeb2)
+    (uuid 80bfba65-25d3-4d33-a5d3-9a7bf5beeb81)
   )
   (wire
     (pts (xy 70.485 87.63) (xy 70.485 88.9))
     (stroke (width 0) (type default))
-    (uuid 4f8369ec-53df-4be0-8be6-94f95155e51b)
+    (uuid 633012bb-ebd4-4143-903b-f3d79b21af6a)
   )
   (text "Proteus-BR: arrays RN 1k convertidos em discretos 0603 (retrabalho manual mais facil). Serie 1k + pulldown 1k por canal, iguais ao original."
     (at 59.055 116.84 0)
     (effects (font (size 1.5 1.5)) (justify left bottom))
-    (uuid 8d18cbd8-00ee-4568-a3ba-f67c33903db4)
+    (uuid d3744fd4-5443-464b-8655-c867dd39cb28)
   )
 )
