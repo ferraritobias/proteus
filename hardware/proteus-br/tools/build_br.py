@@ -70,6 +70,17 @@ def load(src_name):
 
 
 def save(s, dst_name):
+    tb = child(s.tree, 'title_block')
+    if tb is not None:
+        for tag, val in (('title', 'Proteus-BR — %s'
+                          % dst_name.replace('.kicad_sch', '')),
+                         ('date', '2026-06-11'), ('rev', 'v1'),
+                         ('company', 'baseado em rusEFI Proteus v0.7')):
+            node = child(tb, tag)
+            if node is None:
+                tb.append(parse('(%s "%s")' % (tag, val)))
+            else:
+                node[1] = val
     out = os.path.join(DST, dst_name)
     with open(out, 'w') as f:
         f.write(dump(s.tree) + '\n')
@@ -161,6 +172,9 @@ def build_mcu():
 
     # fase 1 DNP inside mcu sheet
     mark_dnp(s, ['J1'])           # microSD
+
+    # VDDA e alimentado via ferrite (passivo) -> PWR_FLAG para ERC
+    s.add_power('power:PWR_FLAG', pin('33'), 0, PROJECT, spath('mcu'))
 
     removed = s.gc_power()
     print('mcu: gc_power removed', removed)
@@ -353,7 +367,231 @@ def build_lowside():
     save(s, 'lowside_quad.kicad_sch')
 
 
+def replace_array(s, ref, center, axis, positions, span, refs_by_ch,
+                  value='1k'):
+    """Replace an R_Pack04 with 4 discrete resistors.
+
+    axis 'h': elements horizontal at y in positions, span=(x1,x2) wire ends.
+    axis 'v': elements vertical at x in positions, span=(y1,y2).
+    """
+    s.delete_symbols([ref], prune=False)
+    a, b = span
+    for ch, coord in enumerate(positions, start=1):
+        refs = refs_by_ch[ch - 1]
+        if axis == 'h':
+            mid = P((a + b) / 2)
+            add_resistor(s, (mid, coord), 90, value, R0603, refs)
+            s.add_wire((a, coord), (mid - 3.81, coord))
+            s.add_wire((mid + 3.81, coord), (b, coord))
+        else:
+            mid = P((a + b) / 2)
+            add_resistor(s, (coord, mid), 0, value, R0603, refs)
+            s.add_wire((coord, a), (coord, mid - 3.81))
+            s.add_wire((coord, mid + 3.81), (coord, b))
+
+
+def build_ign():
+    s = load('ign4.kicad_sch')
+    ensure_lib(s, 'Device:R', 'mcu.kicad_sch')
+    paths = [spath('ign%d' % i) for i in (1, 2, 3)]
+    # driver: TC4427ACOA713 (pin-compatible MIC4427) — decision 6
+    for ref in ('U1602', 'U1603'):
+        setval(s, ref, 'TC4427A')
+    # input pulldown array -> discrete 1k 0603
+    replace_array(s, 'RN1601', None, 'h',
+                  (59.69, 62.23, 64.77, 67.31), (43.815, 53.975),
+                  [[(paths[k], 'R1%d1%d' % (6 + k, ch)) for k in range(3)]
+                   for ch in (1, 2, 3, 4)])
+    # IGN series resistors are 0805 (dissipation/EMI, spec D)
+    for ref in ('R1601', 'R1602', 'R1603', 'R1604'):
+        sym = s.by_ref(ref)
+        set_propval(sym, 'Footprint',
+                    'Resistor_SMD:R_0805_2012Metric')
+    # NC pins 1/8 of the drivers had no no-connect flags in the original
+    for ref in ('U1602', 'U1603'):
+        sym = s.by_ref(ref)
+        for pn in ('1', '8'):
+            s.add_nc(s.pin_pos(sym, pn))
+    s.add_text('Proteus-BR: TC4427ACOA713 (LCSC C144234) substitui '
+               'MIC4427 (indisponivel na LCSC) — pin-compativel, mesma '
+               'familia. Serie 100R em 0805.', (43.815, 110.49), 1.5)
+    save(s, 'ign_quad.kicad_sch')
+
+
+def build_highside():
+    s = load('highside_quad.kicad_sch')
+    ensure_lib(s, 'Device:R', 'mcu.kicad_sch')
+    path = spath('highside_quad')
+    replace_array(s, 'RN1301', None, 'h',
+                  (60.325, 62.865, 65.405, 67.945), (28.575, 38.735),
+                  [[(path, 'R131%d' % ch)] for ch in (1, 2, 3, 4)],
+                  value='10k')
+    # whole sheet is fase-1 DNP (BTS4175SGA footprints only)
+    for sym in s.symbols():
+        lib = child(sym, 'lib_id')[1]
+        libdef = s._lib.get(lib)
+        if lib.startswith('power:') or (libdef is not None and
+                                        child(libdef, 'power') is not None):
+            continue
+        s.set_dnp(sym, True)
+        s.add_property(sym, 'DNP', 'DNP fase 1 — highside nao populado')
+    s.add_text('Proteus-BR: folha inteira nao populada na fase 1 '
+               '(BTS4175SGA esgotado na LCSC; Mouser tem). Roteada desde '
+               'a v1 conforme contrato.', (28.575, 110.49), 1.5)
+    save(s, 'highside_quad.kicad_sch')
+
+
+def build_quad_analog():
+    s = load('quad_analog.kicad_sch')
+    ensure_lib(s, 'Device:R', 'mcu.kicad_sch')
+    paths = [spath('quad_analog%d' % i) for i in (1, 2, 3)]
+    replace_array(s, 'RN701', None, 'h',
+                  (86.995, 89.535, 92.075, 94.615), (73.66, 83.82),
+                  [[(paths[k], 'R%d1%d' % (7 + k, ch)) for k in range(3)]
+                   for ch in (1, 2, 3, 4)],
+                  value='10k')
+    save(s, 'quad_analog.kicad_sch')
+
+
+def build_quad_temp():
+    s = load('quad_analog_pullup.kicad_sch')
+    ensure_lib(s, 'Device:R', 'mcu.kicad_sch')
+    path = spath('quad_analog_temp')
+    replace_array(s, 'RN1101', None, 'h',
+                  (86.995, 89.535, 92.075, 94.615), (73.66, 83.82),
+                  [[(path, 'R112%d' % ch)] for ch in (1, 2, 3, 4)],
+                  value='10k')
+    s.add_text('Pullup 2,7k para 5V_SENSOR_1 = bias_resistor 2700 do '
+               'firmware (contrato; nao alterar).', (73.66, 110.49), 1.5)
+    save(s, 'quad_analog_temp.kicad_sch')
+
+
+def build_triggers():
+    s = load('triggers.kicad_sch')
+    # fase 1: HALL1-2 (DIGITAL_1/2). Pela fiacao original os buffers
+    # cobrem canais cruzados: U1202 = DIG1+DIG5, U1207 = DIG2+DIG3,
+    # U1208 = DIG4+DIG6 -> fase 1 monta U1202 e U1207 (2 chips, nao 1).
+    mark_dnp(s, ['U1208', 'U1107'],
+             note='DNP fase 1 — HALL3-6 nao populados')
+    mark_dnp(s, ['R1405', 'R1406', 'C1405', 'C1406',    # DIG3
+                 'R1407', 'R1408', 'C1407', 'C1408',    # DIG4
+                 'R1201', 'R1202', 'C1204', 'C1205',    # DIG5
+                 'R1203', 'R1204', 'C1207', 'C1208'],   # DIG6
+             note='DNP fase 1 — HALL3-6 nao populados')
+    # VR completo footprint-only na fase 1
+    mark_dnp(s, ['U1203', 'U1204', 'JP1201',
+                 'R1205', 'R1206', 'R1207', 'R1208', 'R1209', 'R1210',
+                 'R1211', 'R1212', 'R1213', 'R1214', 'R1215', 'R1216',
+                 'R1217', 'R1218', 'R1219', 'R1220',
+                 'C1209', 'C1210', 'C1211', 'C1212'],
+             note='DNP fase 1 — MAX9924 footprint-only')
+    # MAX9924 pin 3 had no no-connect flag in the original
+    for ref in ('U1203', 'U1204'):
+        sym = s.by_ref(ref)
+        pp = s.pin_pos(sym, '3')
+        if pp:
+            s.add_nc(pp)
+    save(s, 'triggers.kicad_sch')
+
+
+def build_knock():
+    s = load('knock.kicad_sch')
+    # entrada agora e so o conector C3 (12/13 e 24/25): fora o jack
+    # 3,5 mm J3, os caps do jack e os jumpers de selecao
+    s.delete_symbols(['J3', 'C18', 'C19', 'JP1', 'JP2'])
+    # canal 2 footprint-only (cadeia impar = ch1, par = ch2)
+    mark_dnp(s, ['C1902', 'R1902', 'R1904', 'R43', 'R45', 'R47',
+                 'C22', 'C24', 'C26'],
+             note='DNP fase 1 — knock canal 2 (PF5)')
+    s.add_text('Proteus-BR: jack 3,5 mm J3 removido — entrada de knock '
+               'somente pelos pinos 12/13 (ch1) e 24/25 (ch2) do C3, '
+               'par blindado. U5/U7 compartilhados entre canais '
+               '(populados); apenas passivos do ch2 sao DNP.',
+               (25.4, 25.4), 1.5)
+    removed = s.gc_power()
+    print('knock: gc_power removed', removed)
+    save(s, 'knock.kicad_sch')
+
+
+def build_etb():
+    s = load('etb-9201.kicad_sch')
+    for sym in s.symbols():
+        lib = child(sym, 'lib_id')[1]
+        libdef = s._lib.get(lib)
+        if lib.startswith('power:') or (libdef is not None and
+                                        child(libdef, 'power') is not None):
+            continue
+        s.set_dnp(sym, True)
+        s.add_property(sym, 'DNP', 'DNP fase 1 — ETB footprint-only')
+    s.add_text('Proteus-BR: TLE9201SG footprint-only na fase 1 (sem '
+               'estoque LCSC; Mouser TLE9201SGAUMA1, gemeo industrial '
+               'IFX9201SG LCSC C112633).', (25.4, 25.4), 1.5)
+    save(s, 'etb.kicad_sch')
+
+
+# --------------------------------------------------------------------------
+# global passes over the written BR sheets
+FOOTPRINT_MAP = {
+    'Resistor_SMD:R_0402_1005Metric': 'Resistor_SMD:R_0603_1608Metric',
+    'Capacitor_SMD:C_0402_1005Metric': 'Capacitor_SMD:C_0603_1608Metric',
+}
+
+# Value -> (LCSC, MFN, MPN); applied where Value matches exactly
+FIELDS_BY_VALUE = {
+    'STM32F427ZGT6': ('C117816', 'STMicroelectronics', 'STM32F427ZGT6'),
+    'TLE4251D': ('C539669', 'Infineon', 'TLE4251D'),
+    'TC4427A': ('C144234', 'Microchip', 'TC4427ACOA713'),
+    'VNLD5160': ('C377942', 'STMicroelectronics', 'VNLD5160TR-E'),
+    'BTS4175SGA': ('', 'Infineon', 'BTS4175SGA'),  # Mouser; LCSC esgotado
+    'TLE9201SG': ('', 'Infineon', 'TLE9201SGAUMA1'),
+    'TJA1051T-3': ('C38695', 'NXP', 'TJA1051T/3'),
+    'MAX9924': ('C5145181', 'Analog Devices', 'MAX9924UAUB+T'),
+    'MCP6004': ('C7378', 'Microchip', 'MCP6004-I/SL'),
+    'MCP6002-xSN': ('C7377', 'Microchip', 'MCP6002-I/SN'),
+    'LMR14020': ('C187824', 'Texas Instruments', 'LMR14020SDDAR'),
+    'AMS1117-3.3': ('C6186', 'AMS', 'AMS1117-3.3'),
+    'SRV05-4': ('C13612', 'Semtech', 'SRV05-4.TCT'),
+    'USBLC6-2SC6': ('C7519', 'STMicroelectronics', 'USBLC6-2SC6'),
+    'REF3333': ('C130016', 'Texas Instruments', 'REF3333AIDBZR'),
+    'SN74LVC2G17DB': ('C10429', 'Texas Instruments', 'SN74LVC2G17DBVR'),
+    'SM15T33CA': ('C133707', 'STMicroelectronics', 'SM15T33CA'),
+    'PESD1CAN-UX': ('C152727', 'Nexperia', 'PESD1CAN,215'),
+    '8MHz': ('C115962', 'Yangxing Tech', 'X50328MSB2GI'),
+    'ORANGE': ('C72038', 'Hubei KENTO', 'KT-0603R-O'),
+}
+
+
+def global_passes():
+    import glob
+    for path in sorted(glob.glob(os.path.join(DST, '*.kicad_sch'))):
+        s = Schematic(path)
+        changed = 0
+        for sym in s.symbols():
+            fp = propval(sym, 'Footprint')
+            if fp in FOOTPRINT_MAP:
+                set_propval(sym, 'Footprint', FOOTPRINT_MAP[fp])
+                changed += 1
+            val = propval(sym, 'Value')
+            if val in FIELDS_BY_VALUE:
+                lcsc, mfn, mpn = FIELDS_BY_VALUE[val]
+                if lcsc:
+                    Schematic.add_property(sym, 'LCSC', lcsc)
+                Schematic.add_property(sym, 'MFN', mfn)
+                Schematic.add_property(sym, 'MPN', mpn)
+                changed += 1
+        s.save(path)
+        print('global pass:', os.path.basename(path), changed, 'edits')
+
+
 if __name__ == '__main__':
     build_mcu()
     build_psu()
     build_lowside()
+    build_ign()
+    build_highside()
+    build_quad_analog()
+    build_quad_temp()
+    build_triggers()
+    build_knock()
+    build_etb()
+    global_passes()

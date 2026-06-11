@@ -133,8 +133,12 @@ class Schematic:
         Traversal seeds at deleted-symbol pin positions, walks wires by
         shared endpoints, stops at pins of kept symbols and at stop_points.
         """
-        refs = set(refs)
-        doomed = [s for s in self.symbols() if propval(s, 'Reference') in refs]
+        doomed = []
+        for ref in refs:
+            sym = self.by_ref(ref)
+            assert sym is not None, 'delete_symbols: %s not found' % ref
+            if sym not in doomed:
+                doomed.append(sym)
         seeds = set()
         for s in doomed:
             lib_id = child(s, 'lib_id')[1]

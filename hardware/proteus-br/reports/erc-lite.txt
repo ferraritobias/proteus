@@ -1,0 +1,11 @@
+ERC-lite Proteus-BR
+Netlist: /tmp/proteus-br.xml
+NOTA: kicad-cli sch erc indisponivel (KiCad 7.0.11; PPA do KiCad 8 bloqueado pela rede do ambiente). Rodar ERC do KiCad >=8 na primeira abertura do projeto.
+
+== PROBLEMAS: nenhum ==
+
+== WAIVERS (4) ==
+[input_only/waived] net Net-(JP1201-C): so entradas [('JP1201', '2'), ('U1203', '6')] — strap de modo do MAX9924 (JP1201 bridged 1-2); cadeia VR e DNP na fase 1
+[undriven/waived] net Net-(U1501-VCAP_1): power_in [('U1501', '71')] sem driver — VCAP do STM32: so capacitor, exigencia ST — correto sem driver
+[undriven/waived] net Net-(U1501-VCAP_2): power_in [('U1501', '106')] sem driver — idem VCAP_1
+[undriven/waived] net Net-(U903-EN): power_in [('U903', '2')] sem driver — EN do LMR14020 polarizado por R905 (10k) — topologia da v0.7 mantida
